@@ -11,12 +11,8 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="250"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -25,9 +21,14 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
         </Grid.RowDefinitions>
+        <TextBlock Text="Strength"/>
+        <TextBlock x:Name="StrengthResult"/>
+        <TextBlock Text="Dexterity"/>
+        <TextBlock x:Name="DexterityResult"/>
+        <TextBlock Text="Inteligence"/>
+        <TextBlock x:Name="InteligenceResult"/>
+        <TextBlock Text="Vitality"/>
+        <TextBlock x:Name="VitalityResult"/>
     </Grid>
 </Page>

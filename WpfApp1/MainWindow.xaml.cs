@@ -23,7 +23,7 @@ namespace WpfApp1
         public MainWindow()
         {
             InitializeComponent();
-            NavigationService.Navigated(new Characters());
+            navFr.NavigationService.Navigate(new Pages.Characters());
         }
     }
 }

@@ -5,15 +5,15 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WpfApp1.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800" Background="#2E8B57"
+      d:DesignHeight="450" d:DesignWidth="800"
       Title="Characters" FontSize="30">
 
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
-            <ColumnDefinition Width="200"/>
-            <ColumnDefinition Width="200"/>
-            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="250"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -23,6 +23,11 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
+        <Image Source="/Images/Fantasy.jpg"
+            Grid.Column="0"
+            Grid.ColumnSpan="5"
+            Grid.Row="0"
+            Grid.RowSpan="5"/>
         <TextBlock Text="Characters"
            Grid.Column="1"
            Grid.ColumnSpan="3"
@@ -49,31 +54,37 @@
            VerticalAlignment="Center"
            FontSize="40"/>
         <Button x:Name="WarriorBTN"
-            Width="100"
-            Height="100"
+            Width="180"
+            Height="180"
             Grid.Column="1"
             Grid.Row="2"
+            Grid.RowSpan="2"
             HorizontalAlignment="Center"
-            VerticalAlignment="Center" Click="WarriorBTN_Click">
-            <Image Source="Images/Warrior.jpg"/>
+            VerticalAlignment="Center"
+            Click="WarriorBTN_Click">
+            <Image Source="/Images/Warrior.jpg"/>
         </Button>
         <Button x:Name="RogueBTN"
-            Width="100"
-            Height="100"
+            Width="180"
+            Height="180"
             Grid.Column="2"
             Grid.Row="2"
+            Grid.RowSpan="2"
             HorizontalAlignment="Center"
-            VerticalAlignment="Center" Click="RogueBTN_Click">
-            <Image Source="Images/Rogue.jpg"/>
+            VerticalAlignment="Center"
+            Click="RogueBTN_Click">
+            <Image Source="/Images/Rogue.jpg"/>
         </Button>
         <Button x:Name="WizardBTN"
-            Width="100"
-            Height="100"
+            Width="180"
+            Height="180"
             Grid.Column="3"
-            Grid.Row="1"
+            Grid.Row="2"
+            Grid.RowSpan="2"
             HorizontalAlignment="Center"
-            VerticalAlignment="Top" Margin="0,85,0,0" Grid.RowSpan="3" Click="WizardBTN_Click">
-            <Image Source="Images/Wizard.jpg"/>
+            VerticalAlignment="Center"
+            Click="WizardBTN_Click">
+            <Image Source="/Images/Wizard.jpg"/>
         </Button>
     </Grid>
 </Page>
