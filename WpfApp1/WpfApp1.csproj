@@ -199,11 +199,11 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\rogue.jpg" />
-    <Resource Include="Images\warrior.jpg" />
     <Resource Include="Images\wizard.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Fantasy.jpg" />
+    <Resource Include="Images\Warrior.png" />
     <Content Include="mongocrypt.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

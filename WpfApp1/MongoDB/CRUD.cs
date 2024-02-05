@@ -9,7 +9,7 @@ namespace WpfApp1.MongoDB
 {
     internal class CRUD
     {
-        public static void CreateUser(Character character)
+        public static void CreateCharacter(Character character)
         {
             var client = new MongoClient("mongodb://localhost");
             var database = client.GetDatabase("GameK");
@@ -17,7 +17,7 @@ namespace WpfApp1.MongoDB
             collection.InsertOne(character);
         }
 
-        public static void GetUser(int number)
+        public static void GetCharacter(int number)
         {
             var client = new MongoClient("mongodb://localhost");
             var database = client.GetDatabase("GameK");

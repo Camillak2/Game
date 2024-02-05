@@ -61,8 +61,10 @@
             Grid.RowSpan="2"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
-            Click="WarriorBTN_Click">
-            <Image Source="/Images/Warrior.jpg"/>
+            Click="WarriorBTN_Click"
+            Background="Transparent"
+            BorderBrush="Transparent">
+            <Image Source="/Images/Warrior.png"/>
         </Button>
         <Button x:Name="RogueBTN"
             Width="180"
@@ -72,7 +74,9 @@
             Grid.RowSpan="2"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
-            Click="RogueBTN_Click">
+            Click="RogueBTN_Click"
+            Background="Transparent"
+            BorderBrush="Transparent">
             <Image Source="/Images/Rogue.jpg"/>
         </Button>
         <Button x:Name="WizardBTN"

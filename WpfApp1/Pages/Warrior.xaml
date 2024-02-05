@@ -23,6 +23,7 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
         <TextBlock Text="Create Warrior"
             FontSize="30"
@@ -31,60 +32,85 @@
             Grid.ColumnSpan="2"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"/>
-        <TextBlock Text="Strength"
+        <TextBlock Text="Name"
             Grid.Column="1"
             Grid.Row="1"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"/>
+        <TextBox x:Name="NameTB"
+            Grid.Column="2"
+            Grid.Row="1"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Width="100"
+            Height="30"/>
+        <TextBlock Text="Strength"
+            Grid.Column="1"
+            Grid.Row="2"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"/>
         <TextBlock x:Name="StrengthResult"
             Grid.Column="2"
-            Grid.Row="1"
+            Grid.Row="2"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             Width="100"
-            Height="30"/>
+            Height="30"
+            Text="30"/>
         <TextBlock Text="Dexterity"
             Grid.Column="1"
-            Grid.Row="2"
+            Grid.Row="3"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"/>
         <TextBlock x:Name="DexterityResult"
             Grid.Column="2"
-            Grid.Row="2"
+            Grid.Row="3"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             Width="100"
-            Height="30"/>
+            Height="30"
+            Text="15"/>
         <TextBlock Text="Inteligence"
             Grid.Column="3"
-            Grid.Row="1"
+            Grid.Row="2"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"/>
         <TextBlock x:Name="InteligenceResult"
             Grid.Column="4"
-            Grid.Row="1"
+            Grid.Row="2"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             Width="100"
-            Height="30"/>
+            Height="30"
+            Text="10"/>
         <TextBlock Text="Vitality"
             Grid.Column="3"
-            Grid.Row="2"
+            Grid.Row="3"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"/>
         <TextBlock x:Name="VitalityResult"
             Grid.Column="4"
-            Grid.Row="2"
+            Grid.Row="3"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             Width="100"
-            Height="30"/>
+            Height="30"
+            Text="25"/>
         <Button x:Name="CreateCharacterBTN"
             Content="Create character"
             Width="200"
             Height="30"
             Grid.Column="2"
             Grid.ColumnSpan="2"
-            Grid.Row="4" Click="CreateCharacterBTN_Click"/>
+            Grid.Row="4"
+            Click="CreateCharacterBTN_Click"/>
+        <Button x:Name="BackBTN"
+            Content="Back"
+            Width="100"
+            Height="30"
+            Grid.Column="2"
+            Grid.ColumnSpan="2"
+            Grid.Row="5"
+            Click="BackBTN_Click"/>
     </Grid>
 </Page>
