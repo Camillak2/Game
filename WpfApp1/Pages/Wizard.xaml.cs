@@ -24,5 +24,10 @@ namespace WpfApp1.Pages
         {
             InitializeComponent();
         }
+
+        private void CreateCharacterBTN_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

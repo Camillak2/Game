@@ -6,12 +6,10 @@
       xmlns:local="clr-namespace:WpfApp1.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800" Background="#2E8B57"
-      Title="Warrior">
+      Title="Warrior" FontSize="20">
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition/>
@@ -25,9 +23,68 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
         </Grid.RowDefinitions>
+        <TextBlock Text="Create Warrior"
+            FontSize="30"
+            Grid.Column="2"
+            Grid.Row="0"
+            Grid.ColumnSpan="2"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"/>
+        <TextBlock Text="Strength"
+            Grid.Column="1"
+            Grid.Row="1"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"/>
+        <TextBlock x:Name="StrengthResult"
+            Grid.Column="2"
+            Grid.Row="1"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Width="100"
+            Height="30"/>
+        <TextBlock Text="Dexterity"
+            Grid.Column="1"
+            Grid.Row="2"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"/>
+        <TextBlock x:Name="DexterityResult"
+            Grid.Column="2"
+            Grid.Row="2"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Width="100"
+            Height="30"/>
+        <TextBlock Text="Inteligence"
+            Grid.Column="3"
+            Grid.Row="1"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"/>
+        <TextBlock x:Name="InteligenceResult"
+            Grid.Column="4"
+            Grid.Row="1"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Width="100"
+            Height="30"/>
+        <TextBlock Text="Vitality"
+            Grid.Column="3"
+            Grid.Row="2"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"/>
+        <TextBlock x:Name="VitalityResult"
+            Grid.Column="4"
+            Grid.Row="2"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Width="100"
+            Height="30"/>
+        <Button x:Name="CreateCharacterBTN"
+            Content="Create character"
+            Width="200"
+            Height="30"
+            Grid.Column="2"
+            Grid.ColumnSpan="2"
+            Grid.Row="4" Click="CreateCharacterBTN_Click"/>
     </Grid>
 </Page>
