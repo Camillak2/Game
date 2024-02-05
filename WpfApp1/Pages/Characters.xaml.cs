@@ -24,5 +24,20 @@ namespace WpfApp1.Pages
         {
             InitializeComponent();
         }
+
+        private void WarriorBTN_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Warrior());
+        }
+
+        private void RogueBTN_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Rogue());
+        }
+
+        private void WizardBTN_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Wizard());
+        }
     }
 }
