@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 using System.Xml.Linq;
 using WpfApp1.MongoDB;
 using WpfApp1.Windows;
+using WpfApp1.Windowss;
 
 namespace WpfApp1.Pages
 {
@@ -42,12 +43,14 @@ namespace WpfApp1.Pages
 
         private void UpdateBTN_Click(object sender, RoutedEventArgs e)
         {
-
+            Window updateWarrior = new UpdateWarrior();
+            updateWarrior.Show();
         }
 
         private void SeeStatsBTN_Click(object sender, RoutedEventArgs e)
         {
-            Window warrior = new WarriorStats();
+            Window warriorStats = new WarriorStats();
+            warriorStats.Show();
         }
 
         private void BackBTN_Click(object sender, RoutedEventArgs e)
