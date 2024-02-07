@@ -25,6 +25,11 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
+        <Image Source="/Images/Fantasy.jpg"
+            Grid.Column="0"
+            Grid.ColumnSpan="6"
+            Grid.Row="0"
+            Grid.RowSpan="6"/>
         <TextBlock Text="Create Rogue"
             FontSize="30"
             Grid.Column="2"
