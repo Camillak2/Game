@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfApp1.MongoDB;
+using WpfApp1.Windows;
 
 namespace WpfApp1.Pages
 {
@@ -43,8 +44,8 @@ namespace WpfApp1.Pages
         }
 
         private void SeeStatsBTN_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new Windows.RogueStats());
+        {   
+            Window rogueStats = new RogueStats();
         }
 
         private void BackBTN_Click(object sender, RoutedEventArgs e)

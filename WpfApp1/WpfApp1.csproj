@@ -121,13 +121,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Windows\RogueStats.xaml.cs">
+    <Compile Include="Windowss\RogueStats.xaml.cs">
       <DependentUpon>RogueStats.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\WarriorStats.xaml.cs">
+    <Compile Include="Windowss\WarriorStats.xaml.cs">
       <DependentUpon>WarriorStats.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\WizardStats.xaml.cs">
+    <Compile Include="Windowss\WizardStats.xaml.cs">
       <DependentUpon>WizardStats.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
@@ -158,15 +158,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\RogueStats.xaml">
+    <Page Include="Windowss\RogueStats.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\WarriorStats.xaml">
+    <Page Include="Windowss\WarriorStats.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\WizardStats.xaml">
+    <Page Include="Windowss\WizardStats.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
