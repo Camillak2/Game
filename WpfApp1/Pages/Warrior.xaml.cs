@@ -43,5 +43,15 @@ namespace WpfApp1.Pages
         {
             NavigationService.Navigate(new Characters());
         }
+
+        private void UpdateBTN_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void SeeStatsBTN_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
