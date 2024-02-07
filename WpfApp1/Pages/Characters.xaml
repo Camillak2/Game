@@ -77,7 +77,7 @@
             Click="RogueBTN_Click"
             Background="Transparent"
             BorderBrush="Transparent">
-            <Image Source="/Images/Rogue.jpg"/>
+            <Image Source="/Images/Rogue.png"/>
         </Button>
         <Button x:Name="WizardBTN"
             Width="180"
@@ -87,8 +87,10 @@
             Grid.RowSpan="2"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
-            Click="WizardBTN_Click">
-            <Image Source="/Images/Wizard.jpg"/>
+            Click="WizardBTN_Click"
+            Background="Transparent"
+            BorderBrush="Transparent">
+            <Image Source="/Images/Wizard.png"/>
         </Button>
     </Grid>
 </Page>

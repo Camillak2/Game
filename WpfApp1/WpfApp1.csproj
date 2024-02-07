@@ -198,12 +198,10 @@
     <Analyzer Include="..\packages\AWSSDK.SecurityToken.3.7.100.14\analyzers\dotnet\cs\AWSSDK.SecurityToken.CodeAnalysis.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\rogue.jpg" />
-    <Resource Include="Images\wizard.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\Fantasy.jpg" />
     <Resource Include="Images\Warrior.png" />
+    <Resource Include="Images\Wizard.png" />
+    <Resource Include="Images\Rogue.png" />
     <Content Include="mongocrypt.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
