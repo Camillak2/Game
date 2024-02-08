@@ -121,6 +121,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="MongoDB\Warrior.cs" />
+    <Compile Include="Pages\AllCharactersPage.xaml.cs">
+      <DependentUpon>AllCharactersPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\WarriorPage.xaml.cs">
+      <DependentUpon>WarriorPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windowss\RogueStats.xaml.cs">
       <DependentUpon>RogueStats.xaml</DependentUpon>
     </Compile>
@@ -151,6 +158,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\AllCharactersPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Characters.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -159,7 +170,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Warrior.xaml">
+    <Page Include="Pages\WarriorPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -200,9 +211,6 @@
     </Compile>
     <Compile Include="Pages\Rogue.xaml.cs">
       <DependentUpon>Rogue.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Warrior.xaml.cs">
-      <DependentUpon>Warrior.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Wizard.xaml.cs">
       <DependentUpon>Wizard.xaml</DependentUpon>

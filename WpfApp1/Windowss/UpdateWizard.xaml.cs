@@ -36,11 +36,11 @@ namespace WpfApp1.Windowss
                 var database = client.GetDatabase("Characters");
                 var collection = database.GetCollection<Character>("CharacterCollection");
                 // параметр фильтрации 
-                var filterss = Builders<Character>.Filter.Eq("Name", App.CharacterChange.Name);
+                //var filterss = Builders<Character>.Filter.Eq("Name", App.CharacterChange.Name);
                 // параметр обновления
                 var update = Builders<Character>.Update.Set("Name", NameUpdate.Text);
-                var result = collection.UpdateOneAsync(filterss, update);
-                App.CharacterChange.Name = NameUpdate.Text;
+                //var result = collection.UpdateOneAsync(filterss, update);
+                //App.CharacterChange.Name = NameUpdate.Text;
 
                 MessageBox.Show("ok");
                 this.Close();

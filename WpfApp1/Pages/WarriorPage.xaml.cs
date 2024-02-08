@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,25 +12,38 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Xml.Linq;
 using WpfApp1.MongoDB;
 using WpfApp1.Windows;
 using WpfApp1.Windowss;
-using MongoDB.Bson;
-using MongoDB.Driver;
 
 namespace WpfApp1.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для Warrior.xaml
+    /// Логика взаимодействия для WarriorPage.xaml
     /// </summary>
-    public partial class Warrior : Page
+    public partial class WarriorPage : Page
     {
-        public Warrior()
+        public int Strength { get; set; }
+        public int MaxStrength { get; set; }
+        public int Dexterity { get; set; }
+        public int MaxDexterity { get; set; }
+        public int Inteligence { get; set; }
+        public int MaxInteligence { get; set; }
+        public int Vitality { get; set; }
+        public int MaxVitality { get; set; }
+        public int Health { get; set; }
+        public int Mana { get; set; }
+        public int PDamage { get; set; }
+        public int Armor { get; set; }
+        public int MDamage { get; set; }
+        public int MDefense { get; set; }
+        public int CrtChance { get; set; }
+        public int CrtDamage { get; set; }
+
+        public WarriorPage()
         {
             InitializeComponent();
         }
-
         private void CreateCharacterBTN_Click(object sender, RoutedEventArgs e)
         {
             string name = NameTB.Text;
@@ -39,8 +51,8 @@ namespace WpfApp1.Pages
             int intelegence = Convert.ToInt32(InteligenceResult.Text);
             int dexterity = Convert.ToInt32(DexterityResult.Text);
             int vitality = Convert.ToInt32(VitalityResult.Text);
-            CRUD.CreateCharacterRogue(new Character(name, strength, 250, dexterity, 80, intelegence, 50, vitality, 100, Convert.ToInt32(2 * vitality + 1 * strength), Convert.ToInt32(1 * intelegence),
-                Convert.ToInt32(1 * strength), Convert.ToInt32(1 * dexterity), Convert.ToInt32(0.2 * intelegence), Convert.ToInt32(0.5 * intelegence), Convert.ToInt32(0.2 * dexterity), Convert.ToInt32(1 * dexterity)));
+            CRUD.CreateCharacterWarrior(new Warrior(name, strength, 65, dexterity, 250, intelegence, 70, vitality, 80, Convert.ToInt32(1.5 * vitality + 0.5 * strength), Convert.ToInt32(1.2 * intelegence),
+                Convert.ToInt32(0.5 * strength + 0.5 * dexterity), Convert.ToInt32(1.5 * dexterity), Convert.ToInt32(0.2 * intelegence), Convert.ToInt32(0.5 * intelegence), Convert.ToInt32(0.2 * dexterity), Convert.ToInt32(1 * dexterity)));
             NavigationService.Navigate(new Characters());
         }
 
@@ -59,6 +71,11 @@ namespace WpfApp1.Pages
         private void BackBTN_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Characters());
+        }
+
+        private void AllWarriorsBTN_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

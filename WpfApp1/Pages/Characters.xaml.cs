@@ -27,7 +27,7 @@ namespace WpfApp1.Pages
 
         private void WarriorBTN_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Warrior());
+            NavigationService.Navigate(new WarriorPage());
         }
 
         private void RogueBTN_Click(object sender, RoutedEventArgs e)
@@ -38,6 +38,11 @@ namespace WpfApp1.Pages
         private void WizardBTN_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Wizard());
+        }
+
+        private void AllCharactersBTN_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AllCharactersPage());
         }
     }
 }
