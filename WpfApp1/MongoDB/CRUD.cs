@@ -9,7 +9,24 @@ namespace WpfApp1.MongoDB
 {
     internal class CRUD
     {
-        public static void CreateCharacter(Character character)
+        public static Character GetCharacter(string name)
+        {
+            var client = new MongoClient("mongodb://localhost");
+            var database = client.GetDatabase("GameK");
+            var collection = database.GetCollection<Character>("CharacterCollection");
+            var character = collection.Find(x => x.Name == name).FirstOrDefault();
+            return character;
+        }
+
+        public static void CreateCharacterWarrior(Character character)
+        {
+            var client = new MongoClient("mongodb://localhost");
+            var database = client.GetDatabase("Characters");
+            var collection = database.GetCollection<Character>("CharacterCollection");
+            collection.InsertOne(character);
+        }
+
+        public static void CreateCharacterRogue(Character character)
         {
             var client = new MongoClient("mongodb://localhost");
             var database = client.GetDatabase("GameK");
@@ -17,24 +34,12 @@ namespace WpfApp1.MongoDB
             collection.InsertOne(character);
         }
 
-        public static void GetCharacter(int number)
+        public static void CreateCharacterWizard(Character character)
         {
             var client = new MongoClient("mongodb://localhost");
             var database = client.GetDatabase("GameK");
             var collection = database.GetCollection<Character>("CharacterCollection");
-            var character = collection.Find(x => x.DiplomNumber == number).FirstOrDefault();
-            if (character == null)
-                Console.WriteLine("Not Found");
-            else
-                Console.WriteLine($"{character.Name} {character.Health}");
-        }
-
-        public static void CreateTestTeam(Team team)
-        {
-            var client = new MongoClient("mongodb://localhost");
-            var database = client.GetDatabase("GameK");
-            var collection = database.GetCollection<Team>("CharacterCollection");
-            collection.InsertOne(team);
+            collection.InsertOne(character);
         }
     }
 }

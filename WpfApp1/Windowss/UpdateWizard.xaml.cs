@@ -35,9 +35,6 @@ namespace WpfApp1.Windowss
                 var client = new MongoClient("mongodb://localhost");
                 var database = client.GetDatabase("Characters");
                 var collection = database.GetCollection<Character>("CharacterCollection");
-
-
-
                 // параметр фильтрации 
                 var filterss = Builders<Character>.Filter.Eq("Name", App.CharacterChange.Name);
                 // параметр обновления
@@ -51,6 +48,5 @@ namespace WpfApp1.Windowss
             else
                 MessageBox.Show("!!!");
         }
-    }
     }
 }

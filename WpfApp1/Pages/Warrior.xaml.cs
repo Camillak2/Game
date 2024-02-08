@@ -17,6 +17,8 @@ using System.Xml.Linq;
 using WpfApp1.MongoDB;
 using WpfApp1.Windows;
 using WpfApp1.Windowss;
+using MongoDB.Bson;
+using MongoDB.Driver;
 
 namespace WpfApp1.Pages
 {
@@ -37,7 +39,8 @@ namespace WpfApp1.Pages
             int intelegence = Convert.ToInt32(InteligenceResult.Text);
             int dexterity = Convert.ToInt32(DexterityResult.Text);
             int vitality = Convert.ToInt32(VitalityResult.Text);
-            CRUD.CreateCharacter(new Character(name, strength, 250, dexterity, 80, intelegence, 50, vitality, 100, 100, 100, 0, 0, 0, 0, 0, 0));
+            CRUD.CreateCharacterRogue(new Character(name, strength, 250, dexterity, 80, intelegence, 50, vitality, 100, Convert.ToInt32(2 * vitality + 1 * strength), Convert.ToInt32(1 * intelegence),
+                Convert.ToInt32(1 * strength), Convert.ToInt32(1 * dexterity), Convert.ToInt32(0.2 * intelegence), Convert.ToInt32(0.5 * intelegence), Convert.ToInt32(0.2 * dexterity), Convert.ToInt32(1 * dexterity)));
             NavigationService.Navigate(new Characters());
         }
 
