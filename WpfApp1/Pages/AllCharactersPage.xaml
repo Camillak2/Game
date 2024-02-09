@@ -41,6 +41,24 @@
            Grid.Row="1"
            HorizontalAlignment="Center"
            VerticalAlignment="Center"/>
+        <Button x:Name="EditWarriorBTN"
+            Content="Edit"
+            Width="60"
+            Height="30"
+            Grid.Column="0"
+            Grid.Row="1"
+            VerticalAlignment="Bottom"
+            HorizontalAlignment="Left"
+            Click="EditWarriorBTN_Click"/>
+        <Button x:Name="DropWarriorBTN"
+            Content="Drop"
+            Width="60"
+            Height="30"
+            Grid.Column="0"
+            Grid.Row="1"
+            VerticalAlignment="Bottom"
+            HorizontalAlignment="Right"
+            Click="DropWarriorBTN_Click"/>
         <ListView x:Name="WarriorsListView"
                   Grid.Column="1"
                   Grid.Row="1"
@@ -67,12 +85,30 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        
+
         <TextBlock Text="All Rogues"
            Grid.Column="0"
            Grid.Row="2"
            HorizontalAlignment="Center"
            VerticalAlignment="Center"/>
+        <Button x:Name="EditRogueBTN"
+            Content="Edit"
+            Width="60"
+            Height="30"
+            Grid.Column="0"
+            Grid.Row="2"
+            VerticalAlignment="Bottom"
+            HorizontalAlignment="Left"
+            Click="EditRogueBTN_Click"/>
+        <Button x:Name="DropRogueBTN"
+            Content="Drop"
+            Width="60"
+            Height="30"
+            Grid.Column="0"
+            Grid.Row="2"
+            VerticalAlignment="Bottom"
+            HorizontalAlignment="Right"
+            Click="DropRogueBTN_Click"/>
         <ListView x:Name="RoguesListView"
                   Grid.Column="1"
                   Grid.Row="2"
@@ -105,6 +141,24 @@
            Grid.Row="3"
            HorizontalAlignment="Center"
            VerticalAlignment="Center"/>
+        <Button x:Name="EditWizardBTN"
+            Content="Edit"
+            Width="60"
+            Height="30"
+            Grid.Column="0"
+            Grid.Row="3"
+            VerticalAlignment="Bottom"
+            HorizontalAlignment="Left"
+            Click="EditWizardBTN_Click"/>
+        <Button x:Name="DropWizardBTN"
+            Content="Drop"
+            Width="60"
+            Height="30"
+            Grid.Column="0"
+            Grid.Row="3"
+            VerticalAlignment="Bottom"
+            HorizontalAlignment="Right"
+            Click="DropWizardBTN_Click"/>
         <ListView x:Name="WizardsListView"
                   Grid.Column="1"
                   Grid.Row="3"

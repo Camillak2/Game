@@ -1,6 +1,7 @@
 ﻿using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -15,6 +16,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfApp1.MongoDB;
+using WpfApp1.Windows;
+using WpfApp1.Windowss;
 
 namespace WpfApp1.Pages
 {
@@ -88,7 +91,7 @@ namespace WpfApp1.Pages
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"An error occurred while loading warriors: {ex.Message}");
+                MessageBox.Show($"An error occurred while loading rogues: {ex.Message}");
                 return new List<Rogue>();
             }
         }
@@ -113,7 +116,7 @@ namespace WpfApp1.Pages
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"An error occurred while loading warriors: {ex.Message}");
+                MessageBox.Show($"An error occurred while loading wizards: {ex.Message}");
                 return new List<Wizard>();
             }
         }
@@ -121,6 +124,59 @@ namespace WpfApp1.Pages
         private void BackBTN_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Characters());
+        }
+
+        //Warrior
+        private void EditWarriorBTN_Click(object sender, RoutedEventArgs e)
+        {
+            if (WarriorsListView.SelectedItem != null)
+            {
+                Warrior selectedWarrior = WarriorsListView.SelectedItem as Warrior;
+
+                WarriorStats warriorStats = new WarriorStats(selectedWarrior);
+                warriorStats.ShowDialog();
+
+                // После закрытия окна редактирования обновим данные в базе данных и в ListView
+                if (warriorStats.DialogResult == true)
+                {
+                    _crudWarrior.UpdateWarrior(selectedWarrior);
+                    LoadWarriorsAsync();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Пожалуйста, выберите воина для редактирования.");
+            }
+        }
+        private void DropWarriorBTN_Click(object sender, RoutedEventArgs e)
+        {
+            if (WarriorsListView.SelectedItem is Warrior warrior)
+            {
+                CRUD.DeleteWarrior(warrior);
+            }
+            Refresh();
+        }
+
+        //Rogue
+        private void EditRogueBTN_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DropRogueBTN_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        //Wizard
+        private void EditWizardBTN_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DropWizardBTN_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

@@ -22,7 +22,7 @@ namespace WpfApp1.MongoDB
             _collectionWizard = db.GetCollection<Wizard>(collection);
         }
 
-        //
+        // Warrior
         private IMongoCollection<Warrior> _collectionWarrior;
 
         public List<Warrior> GetWarriors()
@@ -47,7 +47,34 @@ namespace WpfApp1.MongoDB
             collection.InsertOne(warrior);
         }
 
-        //
+        public void UpdateWarrior(Warrior warrior)
+        {
+            var filter = Builders<Warrior>.Filter.Eq("_id", warrior._id); // Находим воина по его ID
+            var update = Builders<Warrior>.Update
+                .Set("Name", warrior.Name)
+                .Set("Strength", warrior.Strength)
+                .Set("Dexterity", warrior.Dexterity)
+                .Set("Inteligence", warrior.Inteligence)
+                .Set("Vitality", warrior.Vitality)
+                .Set("Health", warrior.Health)
+                .Set("Mana", warrior.Mana)
+                .Set("PDamage", warrior.PDamage)
+                .Set("Armor", warrior.Armor)
+                .Set("MDamage", warrior.MDamage)
+                .Set("MDefense", warrior.MDefense)
+                .Set("CrtChance", warrior.CrtChance)
+                .Set("CrtDamage", warrior.CrtDamage);
+
+            _collectionWarrior.UpdateOne(filter, update);
+        }
+
+        public void DeleteWarrior(Warrior warrior)
+        {
+            var filter = Builders<Warrior>.Filter.Eq("_id", warrior._id); // Находим воина по его ID
+            _collectionWarrior.DeleteOne(filter);
+        }
+
+        // Rogue
         private IMongoCollection<Rogue> _collectionRogue;
 
         public List<Rogue> GetRogues()
@@ -72,7 +99,7 @@ namespace WpfApp1.MongoDB
             collection.InsertOne(rogue);
         }
 
-        //
+        // Wizard
         private IMongoCollection<Wizard> _collectionWizard;
 
         public List<Wizard> GetWizards()
