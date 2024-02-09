@@ -212,7 +212,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MongoDB\Character.cs" />
     <Compile Include="MongoDB\CRUD.cs" />
     <Compile Include="Pages\Characters.xaml.cs">
       <DependentUpon>Characters.xaml</DependentUpon>

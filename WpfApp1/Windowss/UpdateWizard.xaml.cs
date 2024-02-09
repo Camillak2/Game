@@ -32,18 +32,18 @@ namespace WpfApp1.Windowss
         {
             if (NameUpdate.Text != "")
             {
-                var client = new MongoClient("mongodb://localhost");
-                var database = client.GetDatabase("Characters");
-                var collection = database.GetCollection<Character>("CharacterCollection");
-                // параметр фильтрации 
-                //var filterss = Builders<Character>.Filter.Eq("Name", App.CharacterChange.Name);
-                // параметр обновления
-                var update = Builders<Character>.Update.Set("Name", NameUpdate.Text);
-                //var result = collection.UpdateOneAsync(filterss, update);
-                //App.CharacterChange.Name = NameUpdate.Text;
+                //var client = new MongoClient("mongodb://localhost");
+                //var database = client.GetDatabase("Characters");
+                //var collection = database.GetCollection<Character>("CharacterCollection");
+                //// параметр фильтрации 
+                ////var filterss = Builders<Character>.Filter.Eq("Name", App.CharacterChange.Name);
+                //// параметр обновления
+                //var update = Builders<Character>.Update.Set("Name", NameUpdate.Text);
+                ////var result = collection.UpdateOneAsync(filterss, update);
+                ////App.CharacterChange.Name = NameUpdate.Text;
 
-                MessageBox.Show("ok");
-                this.Close();
+                //MessageBox.Show("ok");
+                //this.Close();
             }
             else
                 MessageBox.Show("!!!");

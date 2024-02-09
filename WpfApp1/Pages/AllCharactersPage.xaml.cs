@@ -40,7 +40,7 @@ namespace WpfApp1.Pages
         private async void LoadWarriorsAsync()
         {
             List<Warrior> warriors = await GetWarriorsAsync();
-            WarriorListView.ItemsSource = warriors;
+            WarriorsListView.ItemsSource = warriors;
         }
 
         private async Task<List<Warrior>> GetWarriorsAsync()
@@ -59,6 +59,11 @@ namespace WpfApp1.Pages
                 MessageBox.Show($"An error occurred while loading warriors: {ex.Message}");
                 return new List<Warrior>();
             }
+        }
+
+        private void BackBTN_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Characters());
         }
     }
 }

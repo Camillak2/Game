@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfApp1.MongoDB;
 using WpfApp1.Windows;
 using WpfApp1.Windowss;
 
@@ -33,8 +34,8 @@ namespace WpfApp1.Pages
             int intelegence = Convert.ToInt32(InteligenceResult.Text);
             int dexterity = Convert.ToInt32(DexterityResult.Text);
             int vitality = Convert.ToInt32(VitalityResult.Text);
-            //CRUD.CreateCharacterRogue(new Character(name, strength, 45, dexterity, 80, intelegence, 250, vitality, 70, Convert.ToInt32(1.4 * vitality + 0.2 * strength), Convert.ToInt32(1.5 * intelegence),
-            //    Convert.ToInt32(0.5 * strength), Convert.ToInt32(1 * dexterity), Convert.ToInt32(1 * intelegence), Convert.ToInt32(1 * intelegence), Convert.ToInt32(0.2 * dexterity), Convert.ToInt32(1 * dexterity)));
+            CRUD.CreateWizard(new Wizard(name, strength, 45, dexterity, 80, intelegence, 250, vitality, 70, Convert.ToInt32(1.4 * vitality + 0.2 * strength), Convert.ToInt32(1.5 * intelegence),
+                Convert.ToInt32(0.5 * strength), Convert.ToInt32(1 * dexterity), Convert.ToInt32(1 * intelegence), Convert.ToInt32(1 * intelegence), Convert.ToInt32(0.2 * dexterity), Convert.ToInt32(1 * dexterity)));
             NavigationService.Navigate(new Characters());
         }
 

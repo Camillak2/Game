@@ -40,7 +40,7 @@ namespace WpfApp1.Pages
             }
             else
             {
-                CRUD.CreateCharacterWarrior(new Warrior(name, strength, 65, dexterity, 250, intelegence, 70, vitality, 80, Convert.ToInt32(1.5 * vitality + 0.5 * strength), Convert.ToInt32(1.2 * intelegence),
+                CRUD.CreateWarrior(new Warrior(name, strength, 65, dexterity, 250, intelegence, 70, vitality, 80, Convert.ToInt32(1.5 * vitality + 0.5 * strength), Convert.ToInt32(1.2 * intelegence),
                     Convert.ToInt32(0.5 * strength + 0.5 * dexterity), Convert.ToInt32(1.5 * dexterity), Convert.ToInt32(0.2 * intelegence), Convert.ToInt32(0.5 * intelegence), Convert.ToInt32(0.2 * dexterity), Convert.ToInt32(1 * dexterity)));
                 NavigationService.Navigate(new Characters());
             }
