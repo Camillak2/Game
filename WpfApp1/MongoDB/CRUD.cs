@@ -22,6 +22,7 @@ namespace WpfApp1.MongoDB
             _collectionWizard = db.GetCollection<Wizard>(collection);
         }
 
+        //
         private IMongoCollection<Warrior> _collectionWarrior;
 
         public List<Warrior> GetWarriors()
@@ -46,9 +47,10 @@ namespace WpfApp1.MongoDB
             collection.InsertOne(warrior);
         }
 
+        //
         private IMongoCollection<Rogue> _collectionRogue;
 
-        public List<Rogue> GetRogue()
+        public List<Rogue> GetRogues()
         {
             return _collectionRogue.Find(_ => true).ToList();
         }
@@ -57,7 +59,7 @@ namespace WpfApp1.MongoDB
         {
             var client = new MongoClient("mongodb://localhost");
             var database = client.GetDatabase("GameK");
-            var collection = database.GetCollection<Rogue>("WarriorCollection");
+            var collection = database.GetCollection<Rogue>("RogueCollection");
             var rogue = collection.Find(x => x.Name == name).FirstOrDefault();
             return rogue;
         }
@@ -68,6 +70,14 @@ namespace WpfApp1.MongoDB
             var database = client.GetDatabase("GameK");
             var collection = database.GetCollection<Rogue>("RogueCollection");
             collection.InsertOne(rogue);
+        }
+
+        //
+        private IMongoCollection<Wizard> _collectionWizard;
+
+        public List<Wizard> GetWizards()
+        {
+            return _collectionWizard.Find(_ => true).ToList();
         }
 
         public static Wizard GetWizard(string name)
@@ -85,13 +95,6 @@ namespace WpfApp1.MongoDB
             var database = client.GetDatabase("GameK");
             var collection = database.GetCollection<Wizard>("WizardCollection");
             collection.InsertOne(wizard);
-        }
-
-        private IMongoCollection<Wizard> _collectionWizard;
-
-        public List<Wizard> GetWizard()
-        {
-            return _collectionWizard.Find(_ => true).ToList();
         }
     }
 }

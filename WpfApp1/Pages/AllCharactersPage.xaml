@@ -50,10 +50,20 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Name"
-                                    Width="200"
+                                    Width="160"
                                     DisplayMemberBinding="{Binding Name}"/>
-                    <!--<GridViewColumn Header="Type" DisplayMemberBinding="{Binding Type}"/>
-                    <GridViewColumn Header="Level" DisplayMemberBinding="{Binding Level}"/>-->
+                    <GridViewColumn Header="Strength"
+                                    Width="110"
+                                    DisplayMemberBinding="{Binding Strength}"/>
+                    <GridViewColumn Header="Dexterity"
+                                    Width="110"
+                                    DisplayMemberBinding="{Binding Dexterity}"/>
+                    <GridViewColumn Header="Inteligence"
+                                    Width="110"
+                                    DisplayMemberBinding="{Binding Inteligence}"/>
+                    <GridViewColumn Header="Vitality"
+                                    Width="110"
+                                    DisplayMemberBinding="{Binding Vitality}"/>
                 </GridView>
             </ListView.View>
         </ListView>
@@ -72,10 +82,20 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Name"
-                                    Width="200"
+                                    Width="160"
                                     DisplayMemberBinding="{Binding Name}"/>
-                    <!--<GridViewColumn Header="Type" DisplayMemberBinding="{Binding Type}"/>
-                    <GridViewColumn Header="Level" DisplayMemberBinding="{Binding Level}"/>-->
+                    <GridViewColumn Header="Strength"
+                                    Width="110"
+                                    DisplayMemberBinding="{Binding Strength}"/>
+                    <GridViewColumn Header="Dexterity"
+                                    Width="110"
+                                    DisplayMemberBinding="{Binding Dexterity}"/>
+                    <GridViewColumn Header="Inteligence"
+                                    Width="110"
+                                    DisplayMemberBinding="{Binding Inteligence}"/>
+                    <GridViewColumn Header="Vitality"
+                                    Width="110"
+                                    DisplayMemberBinding="{Binding Vitality}"/>
                 </GridView>
             </ListView.View>
         </ListView>
@@ -94,10 +114,20 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Name"
-                                    Width="200"
+                                    Width="160"
                                     DisplayMemberBinding="{Binding Name}"/>
-                    <!--<GridViewColumn Header="Type" DisplayMemberBinding="{Binding Type}"/>
-                    <GridViewColumn Header="Level" DisplayMemberBinding="{Binding Level}"/>-->
+                    <GridViewColumn Header="Strength"
+                                    Width="110"
+                                    DisplayMemberBinding="{Binding Strength}"/>
+                    <GridViewColumn Header="Dexterity"
+                                    Width="110"
+                                    DisplayMemberBinding="{Binding Dexterity}"/>
+                    <GridViewColumn Header="Inteligence"
+                                    Width="110"
+                                    DisplayMemberBinding="{Binding Inteligence}"/>
+                    <GridViewColumn Header="Vitality"
+                                    Width="110"
+                                    DisplayMemberBinding="{Binding Vitality}"/>
                 </GridView>
             </ListView.View>
         </ListView>
