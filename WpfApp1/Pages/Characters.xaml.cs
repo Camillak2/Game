@@ -32,12 +32,12 @@ namespace WpfApp1.Pages
 
         private void RogueBTN_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Rogue());
+            NavigationService.Navigate(new RoguePage());
         }
 
         private void WizardBTN_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Wizard());
+            NavigationService.Navigate(new WizardPage());
         }
 
         private void AllCharactersBTN_Click(object sender, RoutedEventArgs e)

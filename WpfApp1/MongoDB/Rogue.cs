@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace WpfApp1.MongoDB
 {
-    public class Warrior
+    public class Rogue
     {
         [BsonId]
         public ObjectId _id;
@@ -31,7 +31,7 @@ namespace WpfApp1.MongoDB
         public int CrtChance { get; set; }
         public int CrtDamage { get; set; }
 
-        public Warrior(string name, int strength, int maxStrength, int dexterity, int maxDexterity, int inteligence, int maxInteligence, int vitality, int maxVitality, int health, int mana, int pDamage, int armor, int mDamage, int mDefense, int crtChance, int crtDamage)
+        public Rogue(string name, int strength, int maxStrength, int dexterity, int maxDexterity, int inteligence, int maxInteligence, int vitality, int maxVitality, int health, int mana, int pDamage, int armor, int mDamage, int mDefense, int crtChance, int crtDamage)
         {
             Name = name;
             Strength = strength;

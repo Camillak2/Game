@@ -23,27 +23,42 @@ namespace WpfApp1.Pages
     /// </summary>
     public partial class AllCharactersPage : Page
     {
-        private IMongoCollection<Warrior> _collection;
+        private CRUD _crud;
 
         public AllCharactersPage()
         {
             InitializeComponent();
             InitializeMongoDB();
-
-            List<Warrior> warrior = GetCharactersFromDatabase();
-            CharacterListView.ItemsSource = warrior;
+            LoadWarriorsAsync();
         }
 
         private void InitializeMongoDB()
         {
-            var client = new MongoClient("mongodb://localhost");
-            var database = client.GetDatabase("GameK");
-            _collection = database.GetCollection<Warrior>("WarriorCollection");
+            _crud = new CRUD("mongodb://localhost", "GameK", "WarriorCollection");
         }
 
-        private List<Warrior> GetCharactersFromDatabase()
+        private async void LoadWarriorsAsync()
         {
-            return _collection.Find(_ => true).ToList();
+            List<Warrior> warriors = await GetWarriorsAsync();
+            WarriorListView.ItemsSource = warriors;
+        }
+
+        private async Task<List<Warrior>> GetWarriorsAsync()
+        {
+            try
+            {
+                var warriors = await Task.Run(() =>
+                {
+                    return _crud.GetWarriors();
+                });
+
+                return warriors;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while loading warriors: {ex.Message}");
+                return new List<Warrior>();
+            }
         }
     }
 }

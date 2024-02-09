@@ -23,23 +23,6 @@ namespace WpfApp1.Pages
     /// </summary>
     public partial class WarriorPage : Page
     {
-        public int Strength { get; set; }
-        public int MaxStrength { get; set; }
-        public int Dexterity { get; set; }
-        public int MaxDexterity { get; set; }
-        public int Inteligence { get; set; }
-        public int MaxInteligence { get; set; }
-        public int Vitality { get; set; }
-        public int MaxVitality { get; set; }
-        public int Health { get; set; }
-        public int Mana { get; set; }
-        public int PDamage { get; set; }
-        public int Armor { get; set; }
-        public int MDamage { get; set; }
-        public int MDefense { get; set; }
-        public int CrtChance { get; set; }
-        public int CrtDamage { get; set; }
-
         public WarriorPage()
         {
             InitializeComponent();
@@ -51,9 +34,17 @@ namespace WpfApp1.Pages
             int intelegence = Convert.ToInt32(InteligenceResult.Text);
             int dexterity = Convert.ToInt32(DexterityResult.Text);
             int vitality = Convert.ToInt32(VitalityResult.Text);
-            CRUD.CreateCharacterWarrior(new Warrior(name, strength, 65, dexterity, 250, intelegence, 70, vitality, 80, Convert.ToInt32(1.5 * vitality + 0.5 * strength), Convert.ToInt32(1.2 * intelegence),
-                Convert.ToInt32(0.5 * strength + 0.5 * dexterity), Convert.ToInt32(1.5 * dexterity), Convert.ToInt32(0.2 * intelegence), Convert.ToInt32(0.5 * intelegence), Convert.ToInt32(0.2 * dexterity), Convert.ToInt32(1 * dexterity)));
-            NavigationService.Navigate(new Characters());
+            if (NameTB.Text == "")
+            {
+                MessageBox.Show("Please enter name.");
+            }
+            else
+            {
+                CRUD.CreateCharacterWarrior(new Warrior(name, strength, 65, dexterity, 250, intelegence, 70, vitality, 80, Convert.ToInt32(1.5 * vitality + 0.5 * strength), Convert.ToInt32(1.2 * intelegence),
+                    Convert.ToInt32(0.5 * strength + 0.5 * dexterity), Convert.ToInt32(1.5 * dexterity), Convert.ToInt32(0.2 * intelegence), Convert.ToInt32(0.5 * intelegence), Convert.ToInt32(0.2 * dexterity), Convert.ToInt32(1 * dexterity)));
+                NavigationService.Navigate(new Characters());
+            }
+            
         }
 
         private void UpdateBTN_Click(object sender, RoutedEventArgs e)
@@ -71,11 +62,6 @@ namespace WpfApp1.Pages
         private void BackBTN_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Characters());
-        }
-
-        private void AllWarriorsBTN_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

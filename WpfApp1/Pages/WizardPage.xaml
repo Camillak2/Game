@@ -1,4 +1,4 @@
-﻿<Page x:Class="WpfApp1.Pages.Rogue"
+﻿<Page x:Class="WpfApp1.Pages.WizardPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:WpfApp1.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Rogue" FontSize="20">
+      Title="WizardPage">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -30,7 +30,7 @@
             Grid.ColumnSpan="6"
             Grid.Row="0"
             Grid.RowSpan="6"/>
-        <TextBlock Text="Create Rogue"
+        <TextBlock Text="Create Wizard"
             FontSize="30"
             Grid.Column="2"
             Grid.Row="0"
@@ -61,7 +61,7 @@
             VerticalAlignment="Center"
             Width="100"
             Height="30"
-            Text="20"/>
+            Text="15"/>
         <TextBlock Text="Dexterity"
             Grid.Column="1"
             Grid.Row="3"
@@ -74,7 +74,7 @@
             VerticalAlignment="Center"
             Width="100"
             Height="30"
-            Text="30"/>
+            Text="20"/>
         <TextBlock Text="Inteligence"
             Grid.Column="3"
             Grid.Row="2"
@@ -87,7 +87,7 @@
             VerticalAlignment="Center"
             Width="100"
             Height="30"
-            Text="15"/>
+            Text="35"/>
         <TextBlock Text="Vitality"
             Grid.Column="3"
             Grid.Row="3"
@@ -100,7 +100,7 @@
             VerticalAlignment="Center"
             Width="100"
             Height="30"
-            Text="20"/>
+            Text="15"/>
         <Button x:Name="CreateCharacterBTN"
             Content="Create character"
             Width="200"

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,25 +12,20 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Xml.Linq;
-using WpfApp1.MongoDB;
 using WpfApp1.Windows;
 using WpfApp1.Windowss;
-using MongoDB.Bson;
-using MongoDB.Driver;
 
 namespace WpfApp1.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для Rogue.xaml
+    /// Логика взаимодействия для RoguePage.xaml
     /// </summary>
-    public partial class Rogue : Page
+    public partial class RoguePage : Page
     {
-        public Rogue()
+        public RoguePage()
         {
             InitializeComponent();
         }
-
         private void CreateCharacterBTN_Click(object sender, RoutedEventArgs e)
         {
             string name = NameTB.Text;
@@ -39,8 +33,8 @@ namespace WpfApp1.Pages
             int intelegence = Convert.ToInt32(InteligenceResult.Text);
             int dexterity = Convert.ToInt32(DexterityResult.Text);
             int vitality = Convert.ToInt32(VitalityResult.Text);
-            //CRUD.CreateCharacterRogue(new Character(name, strength, 65, dexterity, 250, intelegence, 70, vitality, 80, Convert.ToInt32(1.5 * vitality + 0.5 * strength), Convert.ToInt32(1.2 * intelegence),
-                //Convert.ToInt32(0.5 * strength + 0.5 * dexterity), Convert.ToInt32(1.5 * dexterity), Convert.ToInt32(0.2 * intelegence), Convert.ToInt32(0.5 * intelegence), Convert.ToInt32(0.2 * dexterity), Convert.ToInt32(1 * dexterity)));
+            CRUD.CreateCharacterRogue(new Character(name, strength, 65, dexterity, 250, intelegence, 70, vitality, 80, Convert.ToInt32(1.5 * vitality + 0.5 * strength), Convert.ToInt32(1.2 * intelegence),
+                Convert.ToInt32(0.5 * strength + 0.5 * dexterity), Convert.ToInt32(1.5 * dexterity), Convert.ToInt32(0.2 * intelegence), Convert.ToInt32(0.5 * intelegence), Convert.ToInt32(0.2 * dexterity), Convert.ToInt32(1 * dexterity)));
             NavigationService.Navigate(new Characters());
         }
 

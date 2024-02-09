@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,25 +12,20 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Xml.Linq;
-using WpfApp1.MongoDB;
 using WpfApp1.Windows;
 using WpfApp1.Windowss;
-using MongoDB.Bson;
-using MongoDB.Driver;
 
 namespace WpfApp1.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для Wizard.xaml
+    /// Логика взаимодействия для WizardPage.xaml
     /// </summary>
-    public partial class Wizard : Page
+    public partial class WizardPage : Page
     {
-        public Wizard()
+        public WizardPage()
         {
             InitializeComponent();
         }
-
         private void CreateCharacterBTN_Click(object sender, RoutedEventArgs e)
         {
             string name = NameTB.Text;
@@ -55,7 +49,7 @@ namespace WpfApp1.Pages
             Window wizardStats = new WizardStats();
             wizardStats.Show();
         }
-        
+
         private void BackBTN_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Characters());

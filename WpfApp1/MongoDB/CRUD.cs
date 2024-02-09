@@ -52,5 +52,19 @@ namespace WpfApp1.MongoDB
             var collection = database.GetCollection<Character>("CharacterCollection");
             collection.InsertOne(character);
         }
+
+        private IMongoCollection<Warrior> _collection;
+
+        public CRUD(string host, string database, string collection)
+        {
+            var client = new MongoClient(host);
+            var db = client.GetDatabase(database);
+            _collection = db.GetCollection<Warrior>(collection);
+        }
+
+        public List<Warrior> GetWarriors()
+        {
+            return _collection.Find(_ => true).ToList();
+        }
     }
 }
