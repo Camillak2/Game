@@ -68,6 +68,7 @@ namespace WpfApp1.MongoDB
             _collectionWarrior.UpdateOne(filter, update);
         }
 
+
         public void DeleteWarrior(Warrior warrior)
         {
             var filter = Builders<Warrior>.Filter.Eq("_id", warrior._id); // Находим воина по его ID

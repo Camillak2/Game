@@ -152,9 +152,8 @@ namespace WpfApp1.Pages
         {
             if (WarriorsListView.SelectedItem is Warrior warrior)
             {
-                CRUD.DeleteWarrior(warrior);
+                //CRUD.DeleteWarrior(warrior);
             }
-            Refresh();
         }
 
         //Rogue
