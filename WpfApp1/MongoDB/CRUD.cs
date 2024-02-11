@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WpfApp1.Pages;
+using WpfApp1.Windows;
+using WpfApp1.Windowss;
 using static WpfApp1.MongoDB.Warrior;
 using static WpfApp1.MongoDB.Rogue;
 using static WpfApp1.MongoDB.Wizard;
@@ -23,11 +25,17 @@ namespace WpfApp1.MongoDB
         }
 
         // Warrior
-        private IMongoCollection<Warrior> _collectionWarrior;
+        public IMongoCollection<Warrior> _collectionWarrior;
 
-        public List<Warrior> GetWarriors()
+        //public List<Warrior> GetWarriors()
+        //{
+        //    return _collectionWarrior.Find(_ => true).ToList();
+        //}
+
+        public async Task<List<Warrior>> GetWarriors()
         {
-            return _collectionWarrior.Find(_ => true).ToList();
+            var warriors = await _collectionWarrior.Find(_ => true).ToListAsync();
+            return warriors;
         }
 
         public static Warrior GetWarrior(string name)

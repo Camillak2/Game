@@ -1,6 +1,7 @@
 ﻿using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data.Common;
 using System.Linq;
 using System.Text;
@@ -27,16 +28,21 @@ namespace WpfApp1.Pages
     public partial class AllCharactersPage : Page
     {
         private CRUD _crudWarrior;
+        private ObservableCollection<Warrior> _warriors;
+
         private CRUD _crudRogue;
         private CRUD _crudWizard;
 
-        public AllCharactersPage()
+        public AllCharactersPage(CRUD crud)
         {
             InitializeComponent();
             InitializeMongoDB();
             LoadWarriorsAsync();
             LoadRoguesAsync();
             LoadWizardsAsync();
+
+            _crudWarrior = crud;
+            LoadWarriors();
         }
 
         private void InitializeMongoDB()
@@ -47,6 +53,11 @@ namespace WpfApp1.Pages
         }
 
         //
+        private async void LoadWarriors()
+        {
+            _warriors = new ObservableCollection<Warrior>(await _crudWarrior.GetWarriors());
+            WarriorsListView.ItemsSource = _warriors;
+        }
         private async void LoadWarriorsAsync()
         {
             List<Warrior> warriors = await GetWarriorsAsync();
@@ -131,17 +142,10 @@ namespace WpfApp1.Pages
         {
             if (WarriorsListView.SelectedItem != null)
             {
-                Warrior selectedWarrior = WarriorsListView.SelectedItem as Warrior;
-
-                WarriorStats warriorStats = new WarriorStats(selectedWarrior);
-                warriorStats.ShowDialog();
-
-                // После закрытия окна редактирования обновим данные в базе данных и в ListView
-                if (warriorStats.DialogResult == true)
-                {
-                    _crudWarrior.UpdateWarrior(selectedWarrior);
-                    LoadWarriorsAsync();
-                }
+                Warrior selectedWarrior = (Warrior)WarriorsListView.SelectedItem;
+                WarriorStats detailsWindow = new WarriorStats(_crudWarrior, selectedWarrior);
+                detailsWindow.ShowDialog();
+                LoadWarriors(); // Обновляем список воинов после закрытия окна редактирования
             }
             else
             {
