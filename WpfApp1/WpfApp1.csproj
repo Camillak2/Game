@@ -142,15 +142,6 @@
     <Compile Include="Windowss\RogueStats.xaml.cs">
       <DependentUpon>RogueStats.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windowss\UpdateRogue.xaml.cs">
-      <DependentUpon>UpdateRogue.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windowss\UpdateWarrior.xaml.cs">
-      <DependentUpon>UpdateWarrior.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windowss\UpdateWizard.xaml.cs">
-      <DependentUpon>UpdateWizard.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Windowss\WarriorStats.xaml.cs">
       <DependentUpon>WarriorStats.xaml</DependentUpon>
     </Compile>
@@ -190,18 +181,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windowss\RogueStats.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windowss\UpdateRogue.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windowss\UpdateWarrior.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windowss\UpdateWizard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

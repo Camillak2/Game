@@ -47,16 +47,10 @@ namespace WpfApp1.Pages
             
         }
 
-        private void UpdateBTN_Click(object sender, RoutedEventArgs e)
-        {
-            Window updateWarrior = new UpdateWarrior();
-            updateWarrior.Show();
-        }
-
         private void SeeStatsBTN_Click(object sender, RoutedEventArgs e)
         {
-            Window warriorStats = new WarriorStats();
-            warriorStats.Show();
+            //Window warriorStats = new WarriorStats();
+            //warriorStats.Show();
         }
 
         private void BackBTN_Click(object sender, RoutedEventArgs e)

@@ -93,30 +93,18 @@ namespace WpfApp1.Windows
         {
             if (NameTB.Text != "")
             {
-                var client = new MongoClient("mongodb://localhost");
-                var database = client.GetDatabase("Characters");
-                var collection = database.GetCollection<Warrior>("CharacterCollection");
+                _selectedWarrior.Name = NameTB.Text;
+                // Обновите другие характеристики воина в соответствии с элементами управления
 
-                // параметр фильтрации 
-                var filterss = Builders<Warrior>.Filter.Eq("Name", App.WarriorChange.Name);
-                // параметр обновления
-                var update = Builders<Warrior>.Update.Set("Name", NameTB.Text);
-                var result = collection.UpdateOneAsync(filterss, update);
-                App.WarriorChange.Name = NameTB.Text;
-
+                _crud.UpdateWarrior(_selectedWarrior);
                 MessageBox.Show("Saved.");
-                Close();
+
+                this.Close();
             }
             else
                 MessageBox.Show("Please enter name.");
 
-            _selectedWarrior.Name = NameTB.Text;
-            // Обновите другие характеристики воина в соответствии с элементами управления
-
-            _crud.UpdateWarrior(_selectedWarrior);
-            MessageBox.Show("Изменения сохранены.");
-
-            this.Close();
+            
         }
     }
 }

@@ -317,7 +317,7 @@
             Height="30"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"/>
-        
+
         <Button x:Name="SaveBTN"
             Content="Save"
             Grid.Column="3"
@@ -328,7 +328,5 @@
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             Click="SaveBTN_Click"/>
-        
-
     </Grid>
 </Window>

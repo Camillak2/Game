@@ -13,7 +13,7 @@ using static WpfApp1.MongoDB.Wizard;
 
 namespace WpfApp1.MongoDB
 {
-    internal class CRUD
+    public class CRUD
     {
         public CRUD(string host, string database, string collection)
         {
@@ -25,12 +25,7 @@ namespace WpfApp1.MongoDB
         }
 
         // Warrior
-        public IMongoCollection<Warrior> _collectionWarrior;
-
-        //public List<Warrior> GetWarriors()
-        //{
-        //    return _collectionWarrior.Find(_ => true).ToList();
-        //}
+        private IMongoCollection<Warrior> _collectionWarrior;
 
         public async Task<List<Warrior>> GetWarriors()
         {
@@ -86,9 +81,10 @@ namespace WpfApp1.MongoDB
         // Rogue
         private IMongoCollection<Rogue> _collectionRogue;
 
-        public List<Rogue> GetRogues()
+        public async Task<List<Rogue>> GetRogues()
         {
-            return _collectionRogue.Find(_ => true).ToList();
+            var rogues = await _collectionRogue.Find(_ => true).ToListAsync();
+            return rogues;
         }
 
         public static Rogue GetRogue(string name)
@@ -111,9 +107,10 @@ namespace WpfApp1.MongoDB
         // Wizard
         private IMongoCollection<Wizard> _collectionWizard;
 
-        public List<Wizard> GetWizards()
+        public async Task<List<Wizard>> GetWizards()
         {
-            return _collectionWizard.Find(_ => true).ToList();
+            var wizards = await _collectionWizard.Find(_ => true).ToListAsync();
+            return wizards;
         }
 
         public static Wizard GetWizard(string name)

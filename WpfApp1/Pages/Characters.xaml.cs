@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfApp1.MongoDB;
 
 namespace WpfApp1.Pages
 {
@@ -42,7 +43,7 @@ namespace WpfApp1.Pages
 
         private void AllCharactersBTN_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new AllCharactersPage());
+            NavigationService.Navigate(new AllCharactersPage(new CRUD("mongodb://localhost", "GameK", "WarriorCollection")));
         }
     }
 }
