@@ -110,14 +110,14 @@
             Grid.ColumnSpan="2"
             Grid.Row="4"
             Click="CreateCharacterBTN_Click"/>
-        <Button x:Name="UpdateBTN"
+        <!--<Button x:Name="UpdateBTN"
             Content="Update"
             Width="200"
             Height="30"
             Grid.Column="2"
             Grid.ColumnSpan="2"
             Grid.Row="4"
-            Click="UpdateBTN_Click"/>
+            Click="UpdateBTN_Click"/>-->
         <Button x:Name="SeeStatsBTN"
             Content="See stats"
             Width="200"

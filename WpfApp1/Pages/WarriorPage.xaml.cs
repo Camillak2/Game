@@ -14,7 +14,6 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfApp1.MongoDB;
 using WpfApp1.Windows;
-using WpfApp1.Windowss;
 
 namespace WpfApp1.Pages
 {

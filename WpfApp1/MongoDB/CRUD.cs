@@ -6,10 +6,10 @@ using System.Text;
 using System.Threading.Tasks;
 using WpfApp1.Pages;
 using WpfApp1.Windows;
-using WpfApp1.Windowss;
 using static WpfApp1.MongoDB.Warrior;
 using static WpfApp1.MongoDB.Rogue;
 using static WpfApp1.MongoDB.Wizard;
+using System.Threading;
 
 namespace WpfApp1.MongoDB
 {
@@ -71,7 +71,6 @@ namespace WpfApp1.MongoDB
             _collectionWarrior.UpdateOne(filter, update);
         }
 
-
         public void DeleteWarrior(Warrior warrior)
         {
             var filter = Builders<Warrior>.Filter.Eq("_id", warrior._id); // Находим воина по его ID
@@ -104,6 +103,34 @@ namespace WpfApp1.MongoDB
             collection.InsertOne(rogue);
         }
 
+        public void UpdateRogue(Rogue rogue)
+        {
+            var filter = Builders<Rogue>.Filter.Eq("_id", rogue._id); // Находим воина по его ID
+            var update = Builders<Rogue>.Update
+                .Set("Name", rogue.Name)
+                .Set("Strength", rogue.Strength)
+                .Set("Dexterity", rogue.Dexterity)
+                .Set("Inteligence", rogue.Inteligence)
+                .Set("Vitality", rogue.Vitality)
+                .Set("Health", rogue.Health)
+                .Set("Mana", rogue.Mana)
+                .Set("PDamage", rogue.PDamage)
+                .Set("Armor", rogue.Armor)
+                .Set("MDamage", rogue.MDamage)
+                .Set("MDefense", rogue.MDefense)
+                .Set("CrtChance", rogue.CrtChance)
+                .Set("CrtDamage", rogue.CrtDamage);
+
+            _collectionRogue.UpdateOne(filter, update);
+        }
+
+
+        public void DeleteRogue(Rogue rogue)
+        {
+            var filter = Builders<Rogue>.Filter.Eq("_id", rogue._id); // Находим воина по его ID
+            _collectionRogue.DeleteOne(filter);
+        }
+
         // Wizard
         private IMongoCollection<Wizard> _collectionWizard;
 
@@ -128,6 +155,33 @@ namespace WpfApp1.MongoDB
             var database = client.GetDatabase("GameK");
             var collection = database.GetCollection<Wizard>("WizardCollection");
             collection.InsertOne(wizard);
+        }
+
+        public void UpdateWizard(Wizard wizard)
+        {
+            var filter = Builders<Wizard>.Filter.Eq("_id", wizard._id); // Находим воина по его ID
+            var update = Builders<Wizard>.Update
+                .Set("Name", wizard.Name)
+                .Set("Strength", wizard.Strength)
+                .Set("Dexterity", wizard.Dexterity)
+                .Set("Inteligence", wizard.Inteligence)
+                .Set("Vitality", wizard.Vitality)
+                .Set("Health", wizard.Health)
+                .Set("Mana", wizard.Mana)
+                .Set("PDamage", wizard.PDamage)
+                .Set("Armor", wizard.Armor)
+                .Set("MDamage", wizard.MDamage)
+                .Set("MDefense", wizard.MDefense)
+                .Set("CrtChance", wizard.CrtChance)
+                .Set("CrtDamage", wizard.CrtDamage);
+
+            _collectionWizard.UpdateOne(filter, update);
+        }
+
+        public void DeleteWizard(Wizard wizard)
+        {
+            var filter = Builders<Wizard>.Filter.Eq("_id", wizard._id); // Находим воина по его ID
+            _collectionWizard.DeleteOne(filter);
         }
     }
 }

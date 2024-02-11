@@ -18,7 +18,6 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfApp1.MongoDB;
 using WpfApp1.Windows;
-using WpfApp1.Windowss;
 
 namespace WpfApp1.Pages
 {
@@ -27,22 +26,41 @@ namespace WpfApp1.Pages
     /// </summary>
     public partial class AllCharactersPage : Page
     {
+        private CRUD _crud;
+        private Warrior _selectedWarrior;
+        private Rogue _selectedRogue;
+        private Wizard _selectedWizard;
+
         private CRUD _crudWarrior;
         private ObservableCollection<Warrior> _warriors;
 
         private CRUD _crudRogue;
-        private CRUD _crudWizard;
+        private ObservableCollection<Rogue> _rogue;
 
-        public AllCharactersPage(CRUD crud)
+        private CRUD _crudWizard;
+        private ObservableCollection<Wizard> _wizard;
+
+        public AllCharactersPage(CRUD crud, Warrior selectedWarrior, Rogue selectedRogue, Wizard selectedWizard)
         {
             InitializeComponent();
             InitializeMongoDB();
+            _crud = crud;
+
             LoadWarriorsAsync();
             LoadRoguesAsync();
             LoadWizardsAsync();
 
             _crudWarrior = crud;
+            _crudRogue = crud;
+            _crudWizard = crud;
             LoadWarriors();
+            LoadRogues();
+            LoadWizards();
+
+           
+            _selectedWarrior = selectedWarrior;
+            _selectedRogue = selectedRogue;
+            _selectedWizard = selectedWizard;
         }
 
         private void InitializeMongoDB()
@@ -52,7 +70,7 @@ namespace WpfApp1.Pages
             _crudWizard = new CRUD("mongodb://localhost", "GameK", "WizardCollection");
         }
 
-        //
+        //Warriors
         private async void LoadWarriors()
         {
             _warriors = new ObservableCollection<Warrior>(await _crudWarrior.GetWarriors());
@@ -82,7 +100,40 @@ namespace WpfApp1.Pages
             }
         }
 
-        //
+        private void EditWarriorBTN_Click(object sender, RoutedEventArgs e)
+        {
+            if (WarriorsListView.SelectedItem != null)
+            {
+                Warrior selectedWarrior = (Warrior)WarriorsListView.SelectedItem;
+                WarriorStats warriorStats = new WarriorStats(_crudWarrior, selectedWarrior);
+                warriorStats.ShowDialog();
+                LoadWarriors(); // Обновляем список воинов после закрытия окна редактирования
+            }
+            else
+            {
+                MessageBox.Show("Пожалуйста, выберите воина для редактирования.");
+            }
+        }
+        private void DropWarriorBTN_Click(object sender, RoutedEventArgs e)
+        {
+            if (WarriorsListView.SelectedItem != null)
+            {
+                Warrior selectedWarrior = (Warrior)WarriorsListView.SelectedItem;
+                _crud.DeleteWarrior(_selectedWarrior);
+                LoadWarriors();
+            }
+            else
+            {
+                MessageBox.Show("Пожалуйста, выберите воина для удаления.");
+            }
+        }
+
+        //Rogues
+        private async void LoadRogues()
+        {
+            _rogue = new ObservableCollection<Rogue>(await _crudRogue.GetRogues());
+            RoguesListView.ItemsSource = _rogue;
+        }
         private async void LoadRoguesAsync()
         {
             List<Rogue> rogues = await GetRoguesAsync();
@@ -107,7 +158,42 @@ namespace WpfApp1.Pages
             }
         }
 
-        //
+        private void EditRogueBTN_Click(object sender, RoutedEventArgs e)
+        {
+            if (WarriorsListView.SelectedItem != null)
+            {
+                Rogue selectedRogue = (Rogue)RoguesListView.SelectedItem;
+                RogueStats rogueStats = new RogueStats(_crudRogue, selectedRogue);
+                rogueStats.ShowDialog();
+                LoadWarriors(); // Обновляем список воинов после закрытия окна редактирования
+            }
+            else
+            {
+                MessageBox.Show("Пожалуйста, выберите воина для редактирования.");
+            }
+
+        }
+
+        private void DropRogueBTN_Click(object sender, RoutedEventArgs e)
+        {
+            if (RoguesListView.SelectedItem != null)
+            {
+                Rogue selectedRogue = (Rogue)RoguesListView.SelectedItem;
+                _crud.DeleteRogue(_selectedRogue);
+                LoadRogues();
+            }
+            else
+            {
+                MessageBox.Show("Пожалуйста, выберите воина для удаления.");
+            }
+        }
+
+        //Wizards
+        private async void LoadWizards()
+        {
+            _wizard = new ObservableCollection<Wizard>(await _crudWizard.GetWizards());
+            WizardsListView.ItemsSource = _wizard;
+        }
         private async void LoadWizardsAsync()
         {
             List<Wizard> wizards = await GetWizardsAsync();
@@ -137,14 +223,13 @@ namespace WpfApp1.Pages
             NavigationService.Navigate(new Characters());
         }
 
-        //Warrior
-        private void EditWarriorBTN_Click(object sender, RoutedEventArgs e)
+        private void EditWizardBTN_Click(object sender, RoutedEventArgs e)
         {
-            if (WarriorsListView.SelectedItem != null)
+            if (WizardsListView.SelectedItem != null)
             {
-                Warrior selectedWarrior = (Warrior)WarriorsListView.SelectedItem;
-                WarriorStats detailsWindow = new WarriorStats(_crudWarrior, selectedWarrior);
-                detailsWindow.ShowDialog();
+                Wizard selectedWizard = (Wizard)WizardsListView.SelectedItem;
+                WizardStats wizardStats = new WizardStats(_crudWizard, selectedWizard);
+                wizardStats.ShowDialog();
                 LoadWarriors(); // Обновляем список воинов после закрытия окна редактирования
             }
             else
@@ -152,34 +237,19 @@ namespace WpfApp1.Pages
                 MessageBox.Show("Пожалуйста, выберите воина для редактирования.");
             }
         }
-        private void DropWarriorBTN_Click(object sender, RoutedEventArgs e)
-        {
-            if (WarriorsListView.SelectedItem is Warrior warrior)
-            {
-                //CRUD.DeleteWarrior(warrior);
-            }
-        }
-
-        //Rogue
-        private void EditRogueBTN_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void DropRogueBTN_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        //Wizard
-        private void EditWizardBTN_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void DropWizardBTN_Click(object sender, RoutedEventArgs e)
         {
-
+            if (WizardsListView.SelectedItem != null)
+            {
+                Wizard selectedWizard = (Wizard)WizardsListView.SelectedItem;
+                _crud.DeleteWizard(_selectedWizard);
+                LoadWizards();
+            }
+            else
+            {
+                MessageBox.Show("Пожалуйста, выберите воина для удаления.");
+            }
         }
     }
 }

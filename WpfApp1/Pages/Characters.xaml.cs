@@ -44,6 +44,8 @@ namespace WpfApp1.Pages
         private void AllCharactersBTN_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new AllCharactersPage(new CRUD("mongodb://localhost", "GameK", "WarriorCollection")));
+            NavigationService.Navigate(new AllCharactersPage(new CRUD("mongodb://localhost", "GameK", RogueCollection")));
+            NavigationService.Navigate(new AllCharactersPage(new CRUD("mongodb://localhost", "GameK", "WizardCollection")));
         }
     }
 }

@@ -103,8 +103,6 @@ namespace WpfApp1.Windows
             }
             else
                 MessageBox.Show("Please enter name.");
-
-            
         }
     }
 }
