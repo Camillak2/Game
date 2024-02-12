@@ -23,17 +23,16 @@ namespace WpfApp1.Pages
     {
         private CRUD _crud;
         private CRUD _selectedWarrior;
-        private CRUD _selectedWRogue;
+        private CRUD _selectedRogue;
         private CRUD _selectedWizard;
-
-        public Characters(CRUD crud, CRUD selectedWarrior)
+        public Characters(CRUD crud, CRUD selectedWarrior, CRUD selectedRogue, CRUD selectedWizard)
         {
             InitializeComponent();
             _crud = crud;
             _selectedWarrior = selectedWarrior;
-            _selectedWRogue = crud;
-            _selectedWizard = crud;
-    }
+            _selectedRogue = selectedRogue;
+            _selectedWizard = selectedWizard;
+        }
 
         private void WarriorBTN_Click(object sender, RoutedEventArgs e)
         {
@@ -52,7 +51,11 @@ namespace WpfApp1.Pages
 
         private void AllCharactersBTN_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new AllCharactersPage(crud, selectedWarrior, selectedRogue, selectedWizard));
+            CRUD crud = new CRUD("mongodb://localhost", "GameK", "WarriorCollection");
+            CRUD selectedWarrior = new CRUD("mongodb://localhost", "GameK", "WarriorCollection");
+            CRUD selectedRogue = new CRUD("mongodb://localhost", "GameK", "RogueCollection");
+            CRUD selectedWizard = new CRUD("mongodb://localhost", "GameK", "WizardCollection");
+            NavigationService.Navigate(new AllCharactersPage(new CRUD(crud, selectedWarrior, selectedRogue, selectedWizard));
         }
     }
 }
