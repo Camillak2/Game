@@ -38,15 +38,19 @@ namespace WpfApp1.Pages
             NavigationService.Navigate(new Characters());
         }
 
-        //private void SeeStatsBTN_Click(object sender, RoutedEventArgs e)
-        //{
-        //    Window rogueStats = new RogueStats();
-        //    rogueStats.Show();
-        //}
-
         private void BackBTN_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Characters());
+        }
+
+        private void CreateRogueBTN_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AllRoguesBTN_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AllRoguesPage(new CRUD("mongodb://localhost", "GameK", "RogueCollection")));
         }
     }
 }

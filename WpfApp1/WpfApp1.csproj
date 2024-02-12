@@ -130,6 +130,15 @@
     <Compile Include="Pages\AllCharactersPage.xaml.cs">
       <DependentUpon>AllCharactersPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\AllRoguesPage.xaml.cs">
+      <DependentUpon>AllRoguesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AllWarriorsPage.xaml.cs">
+      <DependentUpon>AllWarriorsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AllWizardsPage.xaml.cs">
+      <DependentUpon>AllWizardsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\RoguePage.xaml.cs">
       <DependentUpon>RoguePage.xaml</DependentUpon>
     </Compile>
@@ -161,6 +170,18 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Pages\AllCharactersPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AllRoguesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AllWarriorsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AllWizardsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

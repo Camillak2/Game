@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,11 +23,11 @@ namespace WpfApp1.Pages
     /// </summary>
     public partial class WarriorPage : Page
     {
-        public WarriorPage()
+        public WarriorPage(CRUD crud, Warrior warrior)
         {
             InitializeComponent();
         }
-        private void CreateCharacterBTN_Click(object sender, RoutedEventArgs e)
+        private void CreateWarriorBTN_Click(object sender, RoutedEventArgs e)
         {
             string name = NameTB.Text;
             int strength = Convert.ToInt32(StrengthResult.Text);
@@ -41,15 +42,13 @@ namespace WpfApp1.Pages
             {
                 CRUD.CreateWarrior(new Warrior(name, strength, 65, dexterity, 250, intelegence, 70, vitality, 80, Convert.ToInt32(1.5 * vitality + 0.5 * strength), Convert.ToInt32(1.2 * intelegence),
                     Convert.ToInt32(0.5 * strength + 0.5 * dexterity), Convert.ToInt32(1.5 * dexterity), Convert.ToInt32(0.2 * intelegence), Convert.ToInt32(0.5 * intelegence), Convert.ToInt32(0.2 * dexterity), Convert.ToInt32(1 * dexterity)));
-                NavigationService.Navigate(new Characters());
+                NavigationService.Navigate(new AllWarriorsPage());
             }
-            
         }
 
-        private void SeeStatsBTN_Click(object sender, RoutedEventArgs e)
+        private void AllWarriorsBTN_Click(object sender, RoutedEventArgs e)
         {
-            //Window warriorStats = new WarriorStats();
-            //warriorStats.Show();
+            NavigationService.Navigate(new AllWarriorsPage());
         }
 
         private void BackBTN_Click(object sender, RoutedEventArgs e)

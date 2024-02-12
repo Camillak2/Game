@@ -21,17 +21,9 @@ namespace WpfApp1.Pages
     /// </summary>
     public partial class Characters : Page
     {
-        private CRUD _crud;
-        private CRUD _selectedWarrior;
-        private CRUD _selectedRogue;
-        private CRUD _selectedWizard;
-        public Characters(CRUD crud, CRUD selectedWarrior, CRUD selectedRogue, CRUD selectedWizard)
+        public Characters()
         {
             InitializeComponent();
-            _crud = crud;
-            _selectedWarrior = selectedWarrior;
-            _selectedRogue = selectedRogue;
-            _selectedWizard = selectedWizard;
         }
 
         private void WarriorBTN_Click(object sender, RoutedEventArgs e)
@@ -40,7 +32,7 @@ namespace WpfApp1.Pages
         }
 
         private void RogueBTN_Click(object sender, RoutedEventArgs e)
-        {
+        { 
             NavigationService.Navigate(new RoguePage());
         }
 
@@ -49,13 +41,13 @@ namespace WpfApp1.Pages
             NavigationService.Navigate(new WizardPage());
         }
 
-        private void AllCharactersBTN_Click(object sender, RoutedEventArgs e)
-        {
-            CRUD crud = new CRUD("mongodb://localhost", "GameK", "WarriorCollection");
-            CRUD selectedWarrior = new CRUD("mongodb://localhost", "GameK", "WarriorCollection");
-            CRUD selectedRogue = new CRUD("mongodb://localhost", "GameK", "RogueCollection");
-            CRUD selectedWizard = new CRUD("mongodb://localhost", "GameK", "WizardCollection");
-            NavigationService.Navigate(new AllCharactersPage(new CRUD(crud, selectedWarrior, selectedRogue, selectedWizard));
-        }
+        //private void AllCharactersBTN_Click(object sender, RoutedEventArgs e)
+        //{
+        //    CRUD crud = new CRUD("mongodb://localhost", "GameK", "WarriorCollection");
+        //    CRUD selectedWarrior = new CRUD("mongodb://localhost", "GameK", "WarriorCollection");
+        //    CRUD selectedRogue = new CRUD("mongodb://localhost", "GameK", "RogueCollection");
+        //    CRUD selectedWizard = new CRUD("mongodb://localhost", "GameK", "WizardCollection");
+        //    NavigationService.Navigate(new AllCharactersPage(new CRUD(crud, selectedWarrior, selectedRogue, selectedWizard)));
+        //}
     }
 }
