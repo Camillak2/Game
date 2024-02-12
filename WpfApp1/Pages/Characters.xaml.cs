@@ -21,10 +21,19 @@ namespace WpfApp1.Pages
     /// </summary>
     public partial class Characters : Page
     {
-        public Characters()
+        private CRUD _crud;
+        private CRUD _selectedWarrior;
+        private CRUD _selectedWRogue;
+        private CRUD _selectedWizard;
+
+        public Characters(CRUD crud, CRUD selectedWarrior)
         {
             InitializeComponent();
-        }
+            _crud = crud;
+            _selectedWarrior = selectedWarrior;
+            _selectedWRogue = crud;
+            _selectedWizard = crud;
+    }
 
         private void WarriorBTN_Click(object sender, RoutedEventArgs e)
         {
@@ -43,9 +52,7 @@ namespace WpfApp1.Pages
 
         private void AllCharactersBTN_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new AllCharactersPage(new CRUD("mongodb://localhost", "GameK", "WarriorCollection")));
-            NavigationService.Navigate(new AllCharactersPage(new CRUD("mongodb://localhost", "GameK", "RogueCollection")));
-            NavigationService.Navigate(new AllCharactersPage(new CRUD("mongodb://localhost", "GameK", "WizardCollection")));
+            NavigationService.Navigate(new AllCharactersPage(crud, selectedWarrior, selectedRogue, selectedWizard));
         }
     }
 }
