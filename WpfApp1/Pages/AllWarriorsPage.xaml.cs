@@ -109,8 +109,9 @@ namespace WpfApp1.Pages
 
         private void BackBTN_Click(object sender, RoutedEventArgs e)
         {
-            CRUD crud = new CRUD("mongodb://localhost", "GameK", "WarriorCollection");
-            NavigationService.Navigate(new WarriorPage(crud));
+            //CRUD crud = new CRUD("mongodb://localhost", "GameK", "WarriorCollection");
+            //NavigationService.Navigate(new WarriorPage(crud));
+            NavigationService.GoBack();
         }
     }
 }
