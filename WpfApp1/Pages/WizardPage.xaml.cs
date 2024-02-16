@@ -22,31 +22,42 @@ namespace WpfApp1.Pages
     /// </summary>
     public partial class WizardPage : Page
     {
-        public WizardPage()
+        private CRUD _crud;
+        private Wizard _selectedWizard;
+        public WizardPage(CRUD crud, Wizard selectedWizard)
         {
             InitializeComponent();
+            _crud = crud;
+            _selectedWizard = selectedWizard;
         }
-        private void CreateCharacterBTN_Click(object sender, RoutedEventArgs e)
+
+        private void CreateWizardBTN_Click(object sender, RoutedEventArgs e)
         {
             string name = NameTB.Text;
             int strength = Convert.ToInt32(StrengthResult.Text);
             int intelegence = Convert.ToInt32(InteligenceResult.Text);
             int dexterity = Convert.ToInt32(DexterityResult.Text);
             int vitality = Convert.ToInt32(VitalityResult.Text);
-            CRUD.CreateWizard(new Wizard(name, strength, 45, dexterity, 80, intelegence, 250, vitality, 70, Convert.ToInt32(1.4 * vitality + 0.2 * strength), Convert.ToInt32(1.5 * intelegence),
-                Convert.ToInt32(0.5 * strength), Convert.ToInt32(1 * dexterity), Convert.ToInt32(1 * intelegence), Convert.ToInt32(1 * intelegence), Convert.ToInt32(0.2 * dexterity), Convert.ToInt32(1 * dexterity)));
-            NavigationService.Navigate(new Characters());
+            if (NameTB.Text == "")
+            {
+                MessageBox.Show("Please enter name.");
+            }
+            else
+            {
+                CRUD.CreateWizard(new Wizard(name, strength, 45, dexterity, 80, intelegence, 250, vitality, 70, Convert.ToInt32(1.4 * vitality + 0.2 * strength), Convert.ToInt32(1.5 * intelegence),
+                    Convert.ToInt32(0.5 * strength), Convert.ToInt32(1 * dexterity), Convert.ToInt32(1 * intelegence), Convert.ToInt32(1 * intelegence), Convert.ToInt32(0.2 * dexterity), Convert.ToInt32(1 * dexterity)));
+                NavigationService.Navigate(new AllWizardsPage(_crud, _selectedWizard));
+            }
         }
 
-        //private void SeeStatsBTN_Click(object sender, RoutedEventArgs e)
-        //{
-        //    Window wizardStats = new WizardStats();
-        //    wizardStats.Show();
-        //}
+        private void AllWizardsBTN_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AllWizardsPage(_crud, _selectedWizard));
+        }
 
         private void BackBTN_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Characters());
+            NavigationService.GoBack();
         }
     }
 }

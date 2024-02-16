@@ -9,7 +9,7 @@
       Title="AllCharactersPage">
 
     <Grid>
-        <Grid.ColumnDefinitions>
+        <!--<Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition/>
@@ -84,9 +84,9 @@
                                     DisplayMemberBinding="{Binding Vitality}"/>
                 </GridView>
             </ListView.View>
-        </ListView>
+        </ListView>-->
 
-        <TextBlock Text="All Rogues"
+        <!--<TextBlock Text="All Rogues"
            Grid.Column="0"
            Grid.Row="2"
            HorizontalAlignment="Center"
@@ -192,6 +192,6 @@
             Grid.Column="1"
             Grid.ColumnSpan="3"
             Grid.Row="5"
-            Click="BackBTN_Click"/>
+            Click="BackBTN_Click"/>-->
     </Grid>
 </Page>

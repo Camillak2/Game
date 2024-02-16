@@ -22,35 +22,41 @@ namespace WpfApp1.Pages
     /// </summary>
     public partial class RoguePage : Page
     {
-        public RoguePage()
+        private CRUD _crud;
+        private Rogue _selectedRogue;
+        public RoguePage(CRUD crud, Rogue selectedRogue)
         {
             InitializeComponent();
+            _crud = crud;
+            _selectedRogue = selectedRogue;
         }
-        private void CreateCharacterBTN_Click(object sender, RoutedEventArgs e)
+        private void CreateRogueBTN_Click(object sender, RoutedEventArgs e)
         {
             string name = NameTB.Text;
             int strength = Convert.ToInt32(StrengthResult.Text);
             int intelegence = Convert.ToInt32(InteligenceResult.Text);
             int dexterity = Convert.ToInt32(DexterityResult.Text);
             int vitality = Convert.ToInt32(VitalityResult.Text);
-            CRUD.CreateRogue(new Rogue(name, strength, 65, dexterity, 250, intelegence, 70, vitality, 80, Convert.ToInt32(1.5 * vitality + 0.5 * strength), Convert.ToInt32(1.2 * intelegence),
+            if (NameTB.Text == "")
+            {
+                MessageBox.Show("Please enter name.");
+            }
+            else
+            {
+                CRUD.CreateRogue(new Rogue(name, strength, 65, dexterity, 250, intelegence, 70, vitality, 80, Convert.ToInt32(1.5 * vitality + 0.5 * strength), Convert.ToInt32(1.2 * intelegence),
                 Convert.ToInt32(0.5 * strength + 0.5 * dexterity), Convert.ToInt32(1.5 * dexterity), Convert.ToInt32(0.2 * intelegence), Convert.ToInt32(0.5 * intelegence), Convert.ToInt32(0.2 * dexterity), Convert.ToInt32(1 * dexterity)));
-            NavigationService.Navigate(new Characters());
-        }
-
-        private void BackBTN_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new Characters());
-        }
-
-        private void CreateRogueBTN_Click(object sender, RoutedEventArgs e)
-        {
-
+                NavigationService.Navigate(new AllRoguesPage(_crud, _selectedRogue));
+            }
         }
 
         private void AllRoguesBTN_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new AllRoguesPage(new CRUD("mongodb://localhost", "GameK", "RogueCollection")));
+            NavigationService.Navigate(new AllRoguesPage(_crud, _selectedRogue));
+        }
+
+        private void BackBTN_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
         }
     }
 }

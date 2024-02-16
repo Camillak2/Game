@@ -107,7 +107,7 @@ namespace WpfApp1.Pages
 
         private void BackBTN_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new WizardPage());
+            NavigationService.Navigate(new WizardPage(_crud, _selectedWizard));
         }
     }
 }

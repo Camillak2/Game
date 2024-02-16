@@ -41,6 +41,7 @@ namespace WpfApp1.Pages
             LoadRogues();
 
             _selectedRogue = selectedRogue;
+
         }
 
         private void InitializeMongoDB()
@@ -109,7 +110,7 @@ namespace WpfApp1.Pages
 
         private void BackBTN_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new RoguePage());
+            NavigationService.Navigate(new RoguePage(_crud, _selectedRogue));
         }
     }
 }

@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfApp1.MongoDB;
+using WpfApp1.Pages;
 
 namespace WpfApp1
 {
@@ -20,10 +22,14 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        private CRUD _crud;
+        private Warrior _selectedWarrior;
+        private Rogue _selectedRogue;
+        private Wizard _selectedWizard;
+        public MainWindow() : base()
         {
             InitializeComponent();
-            navFr.NavigationService.Navigate(new Pages.Characters());
+            navFr.NavigationService.Navigate(new Characters(_crud, _selectedWarrior, _selectedRogue, _selectedWizard));
         }
     }
 }

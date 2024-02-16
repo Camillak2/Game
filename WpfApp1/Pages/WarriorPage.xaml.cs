@@ -24,12 +24,12 @@ namespace WpfApp1.Pages
     public partial class WarriorPage : Page
     {
         private CRUD _crud;
-        private Warrior _warrior;
-        public WarriorPage(CRUD crud, Warrior warrior)
+        private Warrior _selectedWarrior;
+        public WarriorPage(CRUD crud, Warrior selectedWarrior)
         {
             InitializeComponent();
             _crud = crud;
-            _warrior = warrior;
+            _selectedWarrior = selectedWarrior;
         }
         private void CreateWarriorBTN_Click(object sender, RoutedEventArgs e)
         {
@@ -46,19 +46,18 @@ namespace WpfApp1.Pages
             {
                 CRUD.CreateWarrior(new Warrior(name, strength, 65, dexterity, 250, intelegence, 70, vitality, 80, Convert.ToInt32(1.5 * vitality + 0.5 * strength), Convert.ToInt32(1.2 * intelegence),
                     Convert.ToInt32(0.5 * strength + 0.5 * dexterity), Convert.ToInt32(1.5 * dexterity), Convert.ToInt32(0.2 * intelegence), Convert.ToInt32(0.5 * intelegence), Convert.ToInt32(0.2 * dexterity), Convert.ToInt32(1 * dexterity)));
-                NavigationService.Navigate(new AllWarriorsPage(crud));
+                NavigationService.Navigate(new AllWarriorsPage(_crud, _selectedWarrior));
             }
         }
 
         private void AllWarriorsBTN_Click(object sender, RoutedEventArgs e)
         {
-            CRUD crud = new CRUD("mongodb://localhost", "GameK", "WarriorCollection");
-            NavigationService.Navigate(new AllWarriorsPage(crud));
+            NavigationService.Navigate(new AllWarriorsPage(_crud, _selectedWarrior));
         }
 
         private void BackBTN_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Characters());
+            NavigationService.GoBack();
         }
     }
 }

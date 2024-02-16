@@ -21,24 +21,33 @@ namespace WpfApp1.Pages
     /// </summary>
     public partial class Characters : Page
     {
-        public Characters()
+        private CRUD _crud;
+        private Warrior _selectedWarrior;
+        private Rogue _selectedRogue;
+        private Wizard _selectedWizard;
+
+        public Characters(CRUD crud, Warrior selectedWarrior, Rogue selectedRogue, Wizard selectedWizard)
         {
             InitializeComponent();
+            _crud = crud;
+            _selectedWarrior = selectedWarrior;
+            _selectedRogue = selectedRogue;
+            _selectedWizard = selectedWizard;
         }
 
         private void WarriorBTN_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new WarriorPage());
+            NavigationService.Navigate(new WarriorPage(_crud, _selectedWarrior));
         }
 
         private void RogueBTN_Click(object sender, RoutedEventArgs e)
         { 
-            NavigationService.Navigate(new RoguePage());
+            NavigationService.Navigate(new RoguePage(_crud, _selectedRogue));
         }
 
         private void WizardBTN_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new WizardPage());
+            NavigationService.Navigate(new WizardPage(_crud, _selectedWizard));
         }
 
         //private void AllCharactersBTN_Click(object sender, RoutedEventArgs e)
