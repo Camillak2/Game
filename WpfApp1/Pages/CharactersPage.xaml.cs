@@ -17,11 +17,11 @@ using WpfApp1.MongoDB;
 namespace WpfApp1.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для Characters.xaml
+    /// Логика взаимодействия для CharactersPage.xaml
     /// </summary>
-    public partial class Characters : Page
+    public partial class CharactersPage : Page
     {
-        public Characters()
+        public CharactersPage()
         {
             InitializeComponent();
         }
@@ -32,7 +32,7 @@ namespace WpfApp1.Pages
         }
 
         private void RogueBTN_Click(object sender, RoutedEventArgs e)
-        { 
+        {
             NavigationService.Navigate(new RoguePage());
         }
 
@@ -40,5 +40,6 @@ namespace WpfApp1.Pages
         {
             NavigationService.Navigate(new WizardPage());
         }
+        
     }
 }

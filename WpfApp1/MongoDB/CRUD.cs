@@ -5,54 +5,56 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WpfApp1.Pages;
+using WpfApp1.MongoDB;
+using MongoDB.Driver.Core.Configuration;
 using WpfApp1.Windows;
-using static WpfApp1.MongoDB.Warrior;
-using static WpfApp1.MongoDB.Rogue;
-using static WpfApp1.MongoDB.Wizard;
+using System.Collections.ObjectModel;
 using System.Threading;
 
 namespace WpfApp1.MongoDB
 {
     public class CRUD
     {
-        public CRUD(string host, string database, string collection)
+        private IMongoCollection<Warrior> _warriorsCollection;
+        private IMongoCollection<Rogue> _roguesCollection;
+        private IMongoCollection<Wizard> _wizardsCollection;
+        public CRUD(string host, string database)
         {
             var client = new MongoClient(host);
             var db = client.GetDatabase(database);
-            _collectionWarrior = db.GetCollection<Warrior>(collection);
-            _collectionRogue = db.GetCollection<Rogue>(collection);
-            _collectionWizard = db.GetCollection<Wizard>(collection);
+            _warriorsCollection = db.GetCollection<Warrior>("WarriorsCollection");
+            _roguesCollection = db.GetCollection<Rogue>("RoguesCollection");
+            _wizardsCollection = db.GetCollection<Wizard>("WizardsCollection");
         }
 
-        // Warrior
-        private IMongoCollection<Warrior> _collectionWarrior;
-
-        public async Task<List<Warrior>> GetWarriors()
-        {
-            var warriors = await _collectionWarrior.Find(_ => true).ToListAsync();
-            return warriors;
-        }
-
-        public static Warrior GetWarrior(string name)
+        public List<Warrior> GetAllWarriors()
         {
             var client = new MongoClient("mongodb://localhost");
-            var database = client.GetDatabase("GameK");
-            var collection = database.GetCollection<Warrior>("WarriorCollection");
-            var warrior = collection.Find(x => x.Name == name).FirstOrDefault();
-            return warrior;
+            var database = client.GetDatabase("GameCamilla");
+            var collection = database.GetCollection<Warrior>("WarriorsCollection");
+            return _warriorsCollection.Find(w => true).ToList();
         }
 
         public static void CreateWarrior(Warrior warrior)
         {
             var client = new MongoClient("mongodb://localhost");
-            var database = client.GetDatabase("GameK");
-            var collection = database.GetCollection<Warrior>("WarriorCollection");
+            var database = client.GetDatabase("GameCamilla");
+            var collection = database.GetCollection<Warrior>("WarriorsCollection");
             collection.InsertOne(warrior);
+        }
+
+        public async Task<List<Warrior>> GetWarriorsAsync()
+        {
+            var client = new MongoClient("mongodb://localhost");
+            var database = client.GetDatabase("GameCamilla");
+            var collection = database.GetCollection<Warrior>("WarriorsCollection");
+            var warriors = await _warriorsCollection.Find(_ => true).ToListAsync();
+            return warriors;
         }
 
         public void UpdateWarrior(Warrior warrior)
         {
-            var filter = Builders<Warrior>.Filter.Eq("_id", warrior._id); // Находим воина по его ID
+            var filter = Builders<Warrior>.Filter.Eq("_id", warrior.Id); // Находим воина по его ID
             var update = Builders<Warrior>.Update
                 .Set("Name", warrior.Name)
                 .Set("Strength", warrior.Strength)
@@ -68,120 +70,119 @@ namespace WpfApp1.MongoDB
                 .Set("CrtChance", warrior.CrtChance)
                 .Set("CrtDamage", warrior.CrtDamage);
 
-            _collectionWarrior.UpdateOne(filter, update);
+            _warriorsCollection.UpdateOne(filter, update);
         }
 
         public void DeleteWarrior(Warrior warrior)
         {
-            var filter = Builders<Warrior>.Filter.Eq("_id", warrior._id); // Находим воина по его ID
-            _collectionWarrior.DeleteOne(filter);
+            var filter = Builders<Warrior>.Filter.Eq("Id", warrior.Id); // Находим воина по его ID
+            _warriorsCollection.DeleteOne(filter);
         }
 
         // Rogue
-        private IMongoCollection<Rogue> _collectionRogue;
-
-        public async Task<List<Rogue>> GetRogues()
-        {
-            var rogues = await _collectionRogue.Find(_ => true).ToListAsync();
-            return rogues;
-        }
-
-        public static Rogue GetRogue(string name)
+        public List<Rogue> GetAllRogues()
         {
             var client = new MongoClient("mongodb://localhost");
-            var database = client.GetDatabase("GameK");
-            var collection = database.GetCollection<Rogue>("RogueCollection");
-            var rogue = collection.Find(x => x.Name == name).FirstOrDefault();
-            return rogue;
+            var database = client.GetDatabase("GameCamilla");
+            var collection = database.GetCollection<Rogue>("RoguesCollection");
+            return _roguesCollection.Find(w => true).ToList();
         }
 
         public static void CreateRogue(Rogue rogue)
         {
             var client = new MongoClient("mongodb://localhost");
-            var database = client.GetDatabase("GameK");
-            var collection = database.GetCollection<Rogue>("RogueCollection");
+            var database = client.GetDatabase("GameCamilla");
+            var collection = database.GetCollection<Rogue>("RoguesCollection");
             collection.InsertOne(rogue);
         }
 
-        public void UpdateRogue(Rogue rogue)
+        public async Task<List<Rogue>> GetRoguesAsync()
         {
-            var filter = Builders<Rogue>.Filter.Eq("_id", rogue._id); // Находим воина по его ID
-            var update = Builders<Rogue>.Update
-                .Set("Name", rogue.Name)
-                .Set("Strength", rogue.Strength)
-                .Set("Dexterity", rogue.Dexterity)
-                .Set("Inteligence", rogue.Inteligence)
-                .Set("Vitality", rogue.Vitality)
-                .Set("Health", rogue.Health)
-                .Set("Mana", rogue.Mana)
-                .Set("PDamage", rogue.PDamage)
-                .Set("Armor", rogue.Armor)
-                .Set("MDamage", rogue.MDamage)
-                .Set("MDefense", rogue.MDefense)
-                .Set("CrtChance", rogue.CrtChance)
-                .Set("CrtDamage", rogue.CrtDamage);
-
-            _collectionRogue.UpdateOne(filter, update);
+            var client = new MongoClient("mongodb://localhost");
+            var database = client.GetDatabase("GameCamilla");
+            var collection = database.GetCollection<Rogue>("RoguesCollection");
+            var rogues = await _roguesCollection.Find(_ => true).ToListAsync();
+            return rogues;
         }
 
+        public void UpdateRogue(Rogue updateRogue)
+        {
+            var filter = Builders<Rogue>.Filter.Eq("_id", updateRogue.Id); // Находим воина по его ID
+            var update = Builders<Rogue>.Update
+                .Set("Name", updateRogue.Name)
+                .Set("Strength", updateRogue.Strength)
+                .Set("Dexterity", updateRogue.Dexterity)
+                .Set("Inteligence", updateRogue.Inteligence)
+                .Set("Vitality", updateRogue.Vitality)
+                .Set("Health", updateRogue.Health)
+                .Set("Mana", updateRogue.Mana)
+                .Set("PDamage", updateRogue.PDamage)
+                .Set("Armor", updateRogue.Armor)
+                .Set("MDamage", updateRogue.MDamage)
+                .Set("MDefense", updateRogue.MDefense)
+                .Set("CrtChance", updateRogue.CrtChance)
+                .Set("CrtDamage", updateRogue.CrtDamage);
+
+            _roguesCollection.UpdateOne(filter, update);
+        }
 
         public void DeleteRogue(Rogue rogue)
         {
-            var filter = Builders<Rogue>.Filter.Eq("_id", rogue._id); // Находим воина по его ID
-            _collectionRogue.DeleteOne(filter);
+            var filter = Builders<Rogue>.Filter.Eq("Id", rogue.Id); // Находим воина по его ID
+            _roguesCollection.DeleteOne(filter);
         }
 
         // Wizard
-        private IMongoCollection<Wizard> _collectionWizard;
-
-        public async Task<List<Wizard>> GetWizards()
-        {
-            var wizards = await _collectionWizard.Find(_ => true).ToListAsync();
-            return wizards;
-        }
-
-        public static Wizard GetWizard(string name)
+        public List<Wizard> GetAllWizards()
         {
             var client = new MongoClient("mongodb://localhost");
-            var database = client.GetDatabase("GameK");
-            var collection = database.GetCollection<Wizard>("WizardCollection");
-            var wizard = collection.Find(x => x.Name == name).FirstOrDefault();
-            return wizard;
+            var database = client.GetDatabase("GameCamilla");
+            var collection = database.GetCollection<Wizard>("WizardsCollection");
+            return _wizardsCollection.Find(w => true).ToList();
         }
 
         public static void CreateWizard(Wizard wizard)
         {
             var client = new MongoClient("mongodb://localhost");
-            var database = client.GetDatabase("GameK");
-            var collection = database.GetCollection<Wizard>("WizardCollection");
+            var database = client.GetDatabase("GameCamilla");
+            var collection = database.GetCollection<Wizard>("WizardsCollection");
             collection.InsertOne(wizard);
         }
 
-        public void UpdateWizard(Wizard wizard)
+        public async Task<List<Wizard>> GetWizardsAsync()
         {
-            var filter = Builders<Wizard>.Filter.Eq("_id", wizard._id); // Находим воина по его ID
-            var update = Builders<Wizard>.Update
-                .Set("Name", wizard.Name)
-                .Set("Strength", wizard.Strength)
-                .Set("Dexterity", wizard.Dexterity)
-                .Set("Inteligence", wizard.Inteligence)
-                .Set("Vitality", wizard.Vitality)
-                .Set("Health", wizard.Health)
-                .Set("Mana", wizard.Mana)
-                .Set("PDamage", wizard.PDamage)
-                .Set("Armor", wizard.Armor)
-                .Set("MDamage", wizard.MDamage)
-                .Set("MDefense", wizard.MDefense)
-                .Set("CrtChance", wizard.CrtChance)
-                .Set("CrtDamage", wizard.CrtDamage);
-
-            _collectionWizard.UpdateOne(filter, update);
+            var client = new MongoClient("mongodb://localhost");
+            var database = client.GetDatabase("GameCamilla");
+            var collection = database.GetCollection<Wizard>("WizardsCollection");
+            var wizards = await _wizardsCollection.Find(_ => true).ToListAsync();
+            return wizards;
         }
 
-        public void DeleteWizard(Wizard wizard)
+        public void UpdateWizard(Wizard updatedWizard)
         {
-            var filter = Builders<Wizard>.Filter.Eq("_id", wizard._id); // Находим воина по его ID
-            _collectionWizard.DeleteOne(filter);
+            var filter = Builders<Wizard>.Filter.Eq("_id", updatedWizard.Id); // Находим воина по его ID
+            var update = Builders<Wizard>.Update
+                .Set("Name", updatedWizard.Name)
+                .Set("Strength", updatedWizard.Strength)
+                .Set("Dexterity", updatedWizard.Dexterity)
+                .Set("Inteligence", updatedWizard.Inteligence)
+                .Set("Vitality", updatedWizard.Vitality)
+                .Set("Health", updatedWizard.Health)
+                .Set("Mana", updatedWizard.Mana)
+                .Set("PDamage", updatedWizard.PDamage)
+                .Set("Armor", updatedWizard.Armor)
+                .Set("MDamage", updatedWizard.MDamage)
+                .Set("MDefense", updatedWizard.MDefense)
+                .Set("CrtChance", updatedWizard.CrtChance)
+                .Set("CrtDamage", updatedWizard.CrtDamage);
+
+            _wizardsCollection.UpdateOne(filter, update);
+        }
+
+        public void DeleteWizard(Warrior warrior)
+        {
+            var filter = Builders<Warrior>.Filter.Eq("Id", warrior.Id); // Находим воина по его ID
+            _warriorsCollection.DeleteOne(filter);
         }
     }
 }

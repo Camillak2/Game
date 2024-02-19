@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MongoDB.Driver;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -23,28 +24,30 @@ namespace WpfApp1.Pages
     /// </summary>
     public partial class AllWizardsPage : Page
     {
-        private CRUD _crud;
-        private Wizard _selectedWizard;
-
         private CRUD _crudWizard;
-        private ObservableCollection<Wizard> _wizard;
-
-        public AllWizardsPage(CRUD crud, Wizard selectedWizard)
+        private ObservableCollection<Wizard> _wizards;
+        public AllWizardsPage()
         {
             InitializeComponent();
-            InitializeMongoDB();
-            _crud = crud;
-            LoadWizardsAsync();
-
-            _crudWizard = crud;
+            InitializeMongoDB()
+            //_crudWizard = new CRUD("mongodb://localhost", "GameCamilla");
             LoadWizards();
-
-            _selectedWizard = selectedWizard;
+            List<Warrior> warriors = _crudWizard.GetAllWarriors();
+            WizardsListView.ItemsSource = warriors;
         }
 
         private void InitializeMongoDB()
         {
-            _crudWizard = new CRUD("mongodb://localhost", "GameK", "WizardCollection");
+            _crudWizard = new CRUD("mongodb://localhost", "GameCamilla");
+        }
+
+        private async void LoadWizards()
+        {
+            var client = new MongoClient("mongodb://localhost");
+            var database = client.GetDatabase("GameCamilla");
+            database.GetCollection<Warrior>("WarriorsCollection");
+            _wizards = new ObservableCollection<Warrior>(await _crudWizard.GetWizardsAsync());
+            WizardsListView.ItemsSource = _wizards;
         }
 
         private async void LoadWizards()

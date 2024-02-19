@@ -22,14 +22,10 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
-        private CRUD _crud;
-        private Warrior _selectedWarrior;
-        private Rogue _selectedRogue;
-        private Wizard _selectedWizard;
-        public MainWindow() : base()
+        public MainWindow()
         {
             InitializeComponent();
-            navFr.NavigationService.Navigate(new Characters(_crud, _selectedWarrior, _selectedRogue, _selectedWizard));
+            navFr.NavigationService.Navigate(new Characters());
         }
     }
 }

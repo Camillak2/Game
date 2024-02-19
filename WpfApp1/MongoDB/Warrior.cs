@@ -12,7 +12,8 @@ namespace WpfApp1.MongoDB
     public class Warrior
     {
         [BsonId]
-        public ObjectId _id;
+        [BsonRepresentation(BsonType.ObjectId)]
+        public ObjectId Id;
 
         public string Name { get; set; }
         public int Strength { get; set; }

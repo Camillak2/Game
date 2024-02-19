@@ -22,13 +22,9 @@ namespace WpfApp1.Pages
     /// </summary>
     public partial class RoguePage : Page
     {
-        private CRUD _crud;
-        private Rogue _selectedRogue;
-        public RoguePage(CRUD crud, Rogue selectedRogue)
+        public RoguePage()
         {
             InitializeComponent();
-            _crud = crud;
-            _selectedRogue = selectedRogue;
         }
         private void CreateRogueBTN_Click(object sender, RoutedEventArgs e)
         {
@@ -45,13 +41,13 @@ namespace WpfApp1.Pages
             {
                 CRUD.CreateRogue(new Rogue(name, strength, 65, dexterity, 250, intelegence, 70, vitality, 80, Convert.ToInt32(1.5 * vitality + 0.5 * strength), Convert.ToInt32(1.2 * intelegence),
                 Convert.ToInt32(0.5 * strength + 0.5 * dexterity), Convert.ToInt32(1.5 * dexterity), Convert.ToInt32(0.2 * intelegence), Convert.ToInt32(0.5 * intelegence), Convert.ToInt32(0.2 * dexterity), Convert.ToInt32(1 * dexterity)));
-                NavigationService.Navigate(new AllRoguesPage(_crud, _selectedRogue));
+                NavigationService.Navigate(new AllRoguesPage());
             }
         }
 
         private void AllRoguesBTN_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new AllRoguesPage(_crud, _selectedRogue));
+            NavigationService.Navigate(new AllRoguesPage());
         }
 
         private void BackBTN_Click(object sender, RoutedEventArgs e)

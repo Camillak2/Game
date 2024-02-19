@@ -22,13 +22,9 @@ namespace WpfApp1.Pages
     /// </summary>
     public partial class WizardPage : Page
     {
-        private CRUD _crud;
-        private Wizard _selectedWizard;
-        public WizardPage(CRUD crud, Wizard selectedWizard)
+        public WizardPage()
         {
             InitializeComponent();
-            _crud = crud;
-            _selectedWizard = selectedWizard;
         }
 
         private void CreateWizardBTN_Click(object sender, RoutedEventArgs e)
@@ -46,13 +42,13 @@ namespace WpfApp1.Pages
             {
                 CRUD.CreateWizard(new Wizard(name, strength, 45, dexterity, 80, intelegence, 250, vitality, 70, Convert.ToInt32(1.4 * vitality + 0.2 * strength), Convert.ToInt32(1.5 * intelegence),
                     Convert.ToInt32(0.5 * strength), Convert.ToInt32(1 * dexterity), Convert.ToInt32(1 * intelegence), Convert.ToInt32(1 * intelegence), Convert.ToInt32(0.2 * dexterity), Convert.ToInt32(1 * dexterity)));
-                NavigationService.Navigate(new AllWizardsPage(_crud, _selectedWizard));
+                NavigationService.Navigate(new AllWizardsPage());
             }
         }
 
         private void AllWizardsBTN_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new AllWizardsPage(_crud, _selectedWizard));
+            NavigationService.Navigate(new AllWizardsPage());
         }
 
         private void BackBTN_Click(object sender, RoutedEventArgs e)

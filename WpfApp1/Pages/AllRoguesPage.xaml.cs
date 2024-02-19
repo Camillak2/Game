@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MongoDB.Driver;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -23,59 +24,31 @@ namespace WpfApp1.Pages
     /// </summary>
     public partial class AllRoguesPage : Page
     {
-        private CRUD _crud;
-        private Rogue _selectedRogue;
-
         private CRUD _crudRogue;
-        private ObservableCollection<Rogue> _rogue;
+        private ObservableCollection<Rogue> _rogues;
 
-        public AllRoguesPage(CRUD crud, Rogue selectedRogue)
+        public AllRoguesPage()
         {
             InitializeComponent();
             InitializeMongoDB();
-            _crud = crud;
-
-            LoadRoguesAsync();
-
-            _crudRogue = crud;
+            //_crudRogue = new CRUD("mongodb://localhost", "GameCamilla");
             LoadRogues();
-
-            _selectedRogue = selectedRogue;
-
+            List<Rogue> rogues = _crudRogue.GetAllRogues();
+            RoguesListView.ItemsSource = rogues;
         }
 
         private void InitializeMongoDB()
         {
-            _crudRogue = new CRUD("mongodb://localhost", "GameK", "RogueCollection");
+            _crudRogue = new CRUD("mongodb://localhost", "GameK");
         }
 
         private async void LoadRogues()
         {
-            _rogue = new ObservableCollection<Rogue>(await _crudRogue.GetRogues());
-            RoguesListView.ItemsSource = _rogue;
-        }
-        private async void LoadRoguesAsync()
-        {
-            List<Rogue> rogues = await GetRoguesAsync();
-            RoguesListView.ItemsSource = rogues;
-        }
-
-        private async Task<List<Rogue>> GetRoguesAsync()
-        {
-            try
-            {
-                var rogues = await Task.Run(() =>
-                {
-                    return _crudRogue.GetRogues();
-                });
-
-                return rogues;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"An error occurred while loading rogues: {ex.Message}");
-                return new List<Rogue>();
-            }
+            var client = new MongoClient("mongodb://localhost");
+            var database = client.GetDatabase("GameCamilla");
+            database.GetCollection<Rogue>("RoguesCollection");
+            _rogues = new ObservableCollection<Rogue>(await _crudRogue.GetRoguesAsync());
+            RoguesListView.ItemsSource = _rogues;
         }
 
         private void EditRogueBTN_Click(object sender, RoutedEventArgs e)
@@ -91,26 +64,22 @@ namespace WpfApp1.Pages
             {
                 MessageBox.Show("Пожалуйста, выберите воина для редактирования.");
             }
-
         }
-
         private void DropRogueBTN_Click(object sender, RoutedEventArgs e)
         {
-            if (RoguesListView.SelectedItem != null)
+            if (RoguesListView.SelectedItem is Rogue selectedRogue)
             {
-                Rogue selectedRogue = (Rogue)RoguesListView.SelectedItem;
-                _crud.DeleteRogue(_selectedRogue);
-                LoadRogues();
+                _crudRogue.DeleteRogue(selectedRogue);
+                _rogues.Remove(selectedRogue);
             }
             else
             {
                 MessageBox.Show("Пожалуйста, выберите воина для удаления.");
             }
         }
-
         private void BackBTN_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new RoguePage(_crud, _selectedRogue));
+            NavigationService.Navigate(new RoguePage());
         }
     }
 }

@@ -41,7 +41,7 @@ namespace WpfApp1.Windows
             // Обновите другие характеристики воина в соответствии с элементами управления
 
             _crud.UpdateWarrior(_selectedWarrior);
-            MessageBox.Show("Изменения сохранены.");
+            MessageBox.Show("Saved.");
 
             this.Close();
         }
