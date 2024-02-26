@@ -26,14 +26,15 @@ namespace WpfApp1.Pages
     {
         private CRUD _crudWizard;
         private ObservableCollection<Wizard> _wizards;
+
         public AllWizardsPage()
         {
             InitializeComponent();
-            InitializeMongoDB()
+            InitializeMongoDB();
             //_crudWizard = new CRUD("mongodb://localhost", "GameCamilla");
             LoadWizards();
-            List<Warrior> warriors = _crudWizard.GetAllWarriors();
-            WizardsListView.ItemsSource = warriors;
+            List<Wizard> wizards = _crudWizard.GetAllWizards();
+            WizardsListView.ItemsSource = wizards;
         }
 
         private void InitializeMongoDB()
@@ -45,38 +46,9 @@ namespace WpfApp1.Pages
         {
             var client = new MongoClient("mongodb://localhost");
             var database = client.GetDatabase("GameCamilla");
-            database.GetCollection<Warrior>("WarriorsCollection");
-            _wizards = new ObservableCollection<Warrior>(await _crudWizard.GetWizardsAsync());
+            database.GetCollection<Warrior>("WizardsCollection");
+            _wizards = new ObservableCollection<Wizard>(await _crudWizard.GetWizardsAsync());
             WizardsListView.ItemsSource = _wizards;
-        }
-
-        private async void LoadWizards()
-        {
-            _wizard = new ObservableCollection<Wizard>(await _crudWizard.GetWizards());
-            WizardsListView.ItemsSource = _wizard;
-        }
-        private async void LoadWizardsAsync()
-        {
-            List<Wizard> wizards = await GetWizardsAsync();
-            WizardsListView.ItemsSource = wizards;
-        }
-
-        private async Task<List<Wizard>> GetWizardsAsync()
-        {
-            try
-            {
-                var wizards = await Task.Run(() =>
-                {
-                    return _crudWizard.GetWizards();
-                });
-
-                return wizards;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"An error occurred while loading wizards: {ex.Message}");
-                return new List<Wizard>();
-            }
         }
 
         private void EditWizardBTN_Click(object sender, RoutedEventArgs e)
@@ -84,33 +56,32 @@ namespace WpfApp1.Pages
             if (WizardsListView.SelectedItem != null)
             {
                 Wizard selectedWizard = (Wizard)WizardsListView.SelectedItem;
-                WizardStats wizardStats = new WizardStats(_crudWizard, selectedWizard);
-                wizardStats.ShowDialog();
-                LoadWizards(); // Обновляем список воинов после закрытия окна редактирования
+                WizardStats detailsWindow = new WizardStats(_crudWizard, selectedWizard);
+                detailsWindow.ShowDialog();
+                LoadWizards();
             }
             else
             {
-                MessageBox.Show("Пожалуйста, выберите воина для редактирования.");
+                MessageBox.Show("Please select a Warrior to edit.");
             }
         }
 
         private void DropWizardBTN_Click(object sender, RoutedEventArgs e)
         {
-            if (WizardsListView.SelectedItem != null)
+            if (WizardsListView.SelectedItem is Wizard selectedWizard)
             {
-                Wizard selectedWizard = (Wizard)WizardsListView.SelectedItem;
-                _crud.DeleteWizard(_selectedWizard);
-                LoadWizards();
+                _crudWizard.DeleteWizard(selectedWizard);
+                _wizards.Remove(selectedWizard);
             }
             else
             {
-                MessageBox.Show("Пожалуйста, выберите воина для удаления.");
+                MessageBox.Show("Please select a Warrior to drop.");
             }
         }
 
         private void BackBTN_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new WizardPage(_crud, _selectedWizard));
+            NavigationService.Navigate(new WarriorPage());
         }
     }
 }

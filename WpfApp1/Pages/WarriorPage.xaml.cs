@@ -40,8 +40,9 @@ namespace WpfApp1.Pages
             }
             else
             {
-                CRUD.CreateWarrior(new Warrior(name, strength, 65, dexterity, 250, intelegence, 70, vitality, 80, Convert.ToInt32(1.5 * vitality + 0.5 * strength), Convert.ToInt32(1.2 * intelegence),
-                    Convert.ToInt32(0.5 * strength + 0.5 * dexterity), Convert.ToInt32(1.5 * dexterity), Convert.ToInt32(0.2 * intelegence), Convert.ToInt32(0.5 * intelegence), Convert.ToInt32(0.2 * dexterity), Convert.ToInt32(1 * dexterity)));
+                CRUD.CreateWarrior(new Warrior(name, strength, 250, dexterity, 80, intelegence, 50, vitality, 100, Convert.ToInt32(2 * vitality + 1 * strength), Convert.ToInt32(1 * intelegence),
+                    Convert.ToInt32(1 * strength), 
+                    Convert.ToInt32(1 * dexterity), Convert.ToInt32(0.2 * intelegence), Convert.ToInt32(0.5 * intelegence), Convert.ToInt32(0.2 * dexterity), Convert.ToInt32(1 * dexterity)));
                 NavigationService.Navigate(new AllWarriorsPage());
             }
         }
@@ -53,7 +54,7 @@ namespace WpfApp1.Pages
 
         private void BackBTN_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.GoBack();
+            NavigationService.Navigate(new CharactersPage());
         }
     }
 }

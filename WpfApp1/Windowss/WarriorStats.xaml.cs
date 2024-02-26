@@ -33,6 +33,18 @@ namespace WpfApp1.Windows
             _crud = crud;
             _selectedWarrior = selectedWarrior;
             NameTB.Text = _selectedWarrior.Name;
+            StrengthTB.Text = _selectedWarrior?.Strength.ToString();
+            MaxStrengthTB.Text = _selectedWarrior.MaxStrength.ToString();
+            InteligenceTB.Text = _selectedWarrior.Inteligence.ToString();
+            MaxInteligenceTB.Text = _selectedWarrior.MaxInteligence.ToString();
+            DexterityTB.Text = _selectedWarrior.Dexterity.ToString();
+            MaxDexterityTB.Text = _selectedWarrior.MaxDexterity.ToString();
+            VitalityTB.Text = _selectedWarrior.Vitality.ToString();
+            MaxVitalityTB.Text = _selectedWarrior.MaxVitality.ToString();
+            ManaTB.Text = _selectedWarrior.Mana.ToString();
+            HealthTB.Text = _selectedWarrior.Health.ToString();
+            PDamageTB.Text = _selectedWarrior.PDamage.ToString();
+
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)

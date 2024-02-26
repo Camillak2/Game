@@ -30,10 +30,16 @@ namespace WpfApp1.Pages
         public AllWarriorsPage()
         {
             InitializeComponent();
-            _crudWarrior = new CRUD("mongodb://localhost", "GameCamilla");
+            InitializeMongoDB();
+            //_crudWarrior = new CRUD("mongodb://localhost", "GameCamilla");
             LoadWarriors();
             List<Warrior> warriors = _crudWarrior.GetAllWarriors();
             WarriorsListView.ItemsSource = warriors;
+        }
+
+        private void InitializeMongoDB()
+        {
+            _crudWarrior = new CRUD("mongodb://localhost", "GameCamilla");
         }
 
         private async void LoadWarriors()
@@ -66,6 +72,10 @@ namespace WpfApp1.Pages
             {
                 _crudWarrior.DeleteWarrior(selectedWarrior);
                 _warriors.Remove(selectedWarrior);
+            }
+            else
+            {
+                MessageBox.Show("Please select a Warrior to drop.");
             }
         }
 

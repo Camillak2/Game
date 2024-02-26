@@ -179,10 +179,10 @@ namespace WpfApp1.MongoDB
             _wizardsCollection.UpdateOne(filter, update);
         }
 
-        public void DeleteWizard(Warrior warrior)
+        public void DeleteWizard(Wizard wizard)
         {
-            var filter = Builders<Warrior>.Filter.Eq("Id", warrior.Id); // Находим воина по его ID
-            _warriorsCollection.DeleteOne(filter);
+            var filter = Builders<Wizard>.Filter.Eq("Id", wizard.Id); // Находим воина по его ID
+            _wizardsCollection.DeleteOne(filter);
         }
     }
 }

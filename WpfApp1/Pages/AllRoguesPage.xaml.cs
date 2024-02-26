@@ -39,7 +39,7 @@ namespace WpfApp1.Pages
 
         private void InitializeMongoDB()
         {
-            _crudRogue = new CRUD("mongodb://localhost", "GameK");
+            _crudRogue = new CRUD("mongodb://localhost", "GameCamilla");
         }
 
         private async void LoadRogues()
@@ -62,7 +62,7 @@ namespace WpfApp1.Pages
             }
             else
             {
-                MessageBox.Show("Пожалуйста, выберите воина для редактирования.");
+                MessageBox.Show("Please select a Rogue to edit.");
             }
         }
         private void DropRogueBTN_Click(object sender, RoutedEventArgs e)
@@ -74,7 +74,7 @@ namespace WpfApp1.Pages
             }
             else
             {
-                MessageBox.Show("Пожалуйста, выберите воина для удаления.");
+                MessageBox.Show("Please select a Rogue to drop.");
             }
         }
         private void BackBTN_Click(object sender, RoutedEventArgs e)

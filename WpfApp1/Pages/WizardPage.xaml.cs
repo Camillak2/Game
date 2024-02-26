@@ -53,7 +53,7 @@ namespace WpfApp1.Pages
 
         private void BackBTN_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.GoBack();
+            NavigationService.Navigate(new CharactersPage());
         }
     }
 }
